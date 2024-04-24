@@ -8,6 +8,6 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
-    cout << "Aller les canailles, gabriel n'est pas le meilleur" << endl;
+    cout << "Aller les canailles, bv gabiboubs" << endl;
     return a.exec();
 }
