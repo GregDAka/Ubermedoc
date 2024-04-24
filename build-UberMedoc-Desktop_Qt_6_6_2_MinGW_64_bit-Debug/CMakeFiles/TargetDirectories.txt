@@ -1,0 +1,9 @@
+D:/c++/Ubermedoc/build-UberMedoc-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/UberMedoc.dir
+D:/c++/Ubermedoc/build-UberMedoc-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+D:/c++/Ubermedoc/build-UberMedoc-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+D:/c++/Ubermedoc/build-UberMedoc-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
+D:/c++/Ubermedoc/build-UberMedoc-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/install.dir
+D:/c++/Ubermedoc/build-UberMedoc-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
+D:/c++/Ubermedoc/build-UberMedoc-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
+D:/c++/Ubermedoc/build-UberMedoc-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/UberMedoc_autogen_timestamp_deps.dir
+D:/c++/Ubermedoc/build-UberMedoc-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/UberMedoc_autogen.dir
