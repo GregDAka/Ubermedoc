@@ -1,0 +1,9 @@
+# ninja log v5
+1	412	7356984243767613	UberMedoc_autogen/timestamp	b3932208259f824d
+418	2318	7356984263265569	CMakeFiles/UberMedoc.dir/mainwindow.cpp.obj	befe73fb6b62980e
+1	412	7356984243767613	UberMedoc_autogen/mocs_compilation.cpp	b3932208259f824d
+1	412	7356984243767613	D:/c++/Ubermedoc/build-UberMedoc-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/UberMedoc_autogen/timestamp	b3932208259f824d
+2319	2793	7356984267975165	UberMedoc.exe	487ef6e5bef697e6
+1	412	7356984243767613	D:/c++/Ubermedoc/build-UberMedoc-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/UberMedoc_autogen/mocs_compilation.cpp	b3932208259f824d
+413	2269	7356984262776097	CMakeFiles/UberMedoc.dir/main.cpp.obj	8d80c12237ed5786
+416	2252	7356984262585650	CMakeFiles/UberMedoc.dir/UberMedoc_autogen/mocs_compilation.cpp.obj	1ec56f2863dd00f0
