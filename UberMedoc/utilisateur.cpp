@@ -2,6 +2,8 @@
 #include <iostream>
 using namespace std;
 
+Utilisateur::Utilisateur(){}
+
 Utilisateur::Utilisateur(string nomU, string prenomU, string adresseU, string mailU, string mdpU){
     nom = nomU;
     prenom = prenomU;

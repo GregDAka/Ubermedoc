@@ -7,13 +7,14 @@ using namespace std;
 
 class Commande
 {
-private:
-    vector<Medicament*> articles;
-    double total;
-    Client client;
+    private:
+        vector<Medicament*> articles;
+        double total;
+        Client client;
 
     public:
         Commande();
+        Commande(Client*);
         ~Commande();
         void afficherDetails();
         void ajouterMedicament(Medicament*);

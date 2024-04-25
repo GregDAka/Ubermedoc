@@ -1,6 +1,5 @@
 #include <string>
 #include "medicament.h"
-#include "commande.h"
 #include <vector>
 using namespace std;
 #ifndef CLIENT_H
@@ -12,7 +11,8 @@ class Client : public Utilisateur
 {
     private:
         vector<Medicament*> panier;
-        double solde;
+        double solde = 0.0;
+        double totalPanier = 0.0;
 
     public:
         Client();
@@ -20,10 +20,11 @@ class Client : public Utilisateur
         ~Client();
         void afficherDetails();
         void inscrire();
-        void ajouterSolde();
+        void ajouterSolde(double);
         void ajouterAuPanier(Medicament*);
         void retirerDuPanier(Medicament*);
-        Commande passerCommande();
+        vector<Medicament*> getPanier();
+        double getTotalPanier();
 };
 
 #endif // CLIENT_H

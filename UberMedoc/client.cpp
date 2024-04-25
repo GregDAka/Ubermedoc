@@ -5,6 +5,8 @@
 #include <iostream>
 using namespace std;
 
+Client::Client(){}
+
 Client::Client(string nomU, string prenomU, string adresseU, string mailU, string mdpU)
     : Utilisateur(nomU, prenomU, adresseU, mailU, mdpU){}
 
@@ -13,12 +15,14 @@ Client::~Client(){}
 
 void Client::afficherDetails(){
     Utilisateur::afficherDetails();
-    cout << "Panier de " << nom << ": "<< endl;
+    cout << "Solde : " << solde << endl
+        << "Panier de " << nom << ": "<< endl;
     if(!panier.empty()){
         for (Medicament* medoc : panier){
             medoc->afficherDetails();
             cout << "--------------------------------"<<endl;
         }
+        cout << "Total : " << totalPanier << " euro" << endl;
     }else{
         cout << "Votre panier est vide :/" << endl;
     }
@@ -31,6 +35,7 @@ void Client::inscrire(){
 
 void Client::ajouterAuPanier(Medicament* medoc){
     panier.push_back(medoc);
+    totalPanier += medoc->getPrix();
 }
 
 void Client::retirerDuPanier(Medicament* medoc){
@@ -38,10 +43,21 @@ void Client::retirerDuPanier(Medicament* medoc){
     for (Medicament* med : panier){
         if (med->getRef() == medoc->getRef()){
             panier.erase(panier.begin() + i);
+            totalPanier -= medoc->getPrix();
         }
         i++;
     }
 }
 
-//Commande Client::passerCommande(){}
+void Client::ajouterSolde(double valeur){
+    solde += valeur;
+}
+
+vector<Medicament*> Client::getPanier(){
+    return panier;
+}
+
+double Client::getTotalPanier(){
+    return totalPanier;
+}
 

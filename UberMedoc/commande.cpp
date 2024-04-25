@@ -1,13 +1,21 @@
 #include "commande.h"
+#include "client.h"
 #include <vector>
 #include <iostream>
 using namespace std;
 
 Commande::Commande(){}
 
-Commande::~Commande(){};
+Commande::Commande(Client* c1){
+    client = *c1;
+    articles = c1->getPanier();
+    total = c1->getTotalPanier();
+}
+
+Commande::~Commande(){}
 
 void Commande::afficherDetails(){
+    cout << endl << "-Details de la commande de " << client.getNom() << " : " << endl;
     if(!articles.empty()){
         for (Medicament* medoc : articles){
             medoc->afficherDetails();
@@ -16,7 +24,7 @@ void Commande::afficherDetails(){
     }else{
         cout << "La commande est vide :/" << endl;
     }
-    cout <<  "-> " << total << endl;
+    cout <<  "Total -> " << total << " euro" <<  endl;
 }
 
 void Commande::ajouterMedicament(Medicament* medoc){
