@@ -1,6 +1,6 @@
 #include <string>
 #include "medicament.h"
-#include <vector>
+#include <map>
 using namespace std;
 #ifndef CLIENT_H
 #define CLIENT_H
@@ -10,7 +10,7 @@ using namespace std;
 class Client : public Utilisateur
 {
     private:
-        vector<Medicament*> panier;
+        map<Medicament*, int> panier;
         double solde = 0.0;
         double totalPanier = 0.0;
 
@@ -23,7 +23,8 @@ class Client : public Utilisateur
         void ajouterSolde(double);
         void ajouterAuPanier(Medicament*);
         void retirerDuPanier(Medicament*);
-        vector<Medicament*> getPanier();
+        void viderPanier();
+        map<Medicament*, int> getPanier();
         double getTotalPanier();
 };
 
