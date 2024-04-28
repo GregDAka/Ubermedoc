@@ -12,7 +12,7 @@ class Medicament
 
     public:
         Medicament();
-        Medicament(int, string, double);
+        Medicament(int ref, string nom, double prix);
         ~Medicament();
         void afficherDetails();
         int getRef();

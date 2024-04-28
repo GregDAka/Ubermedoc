@@ -54,7 +54,6 @@ Client DAOutilisateur::inscriptionUtilisateur(string nom, string prenom, string 
 
     requeteVerif.next(); // Récupère le premier résultat (le nombre d'occurrences)
     int count = requeteVerif.value(0).toInt(); // Récupère le nombre d'occurrences
-    cout<<count<<endl ;
 
     if (count > 0) {
         std::cout << "L'adresse e-mail est deja utilisee." << std::endl;
@@ -77,7 +76,7 @@ Client DAOutilisateur::inscriptionUtilisateur(string nom, string prenom, string 
     query.bindValue(":adresse", qAdresse);
 
     if (!query.exec()) {
-        std::cerr << "Erreur d'insertion des données : " << query.lastError().text().toStdString() << std::endl;
+        std::cerr << "Erreur d'insertion des donnees : " << query.lastError().text().toStdString() << std::endl;
         return Client();
     }
 
