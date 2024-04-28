@@ -25,6 +25,7 @@ void Connexion::on_btnRetour_clicked()
 
 void Connexion::on_btnConfirmer_clicked()
 {
-    //
+    // Quand on confirme, les champs entrer sont paramètre d'une requête SQL qui vérifie si l'adresse Mail et le MDP sont présent dans la base.
+    // Si oui on créera un objet CLIENT avec le client log, cet objet nous servira plus tard..
 }
 
