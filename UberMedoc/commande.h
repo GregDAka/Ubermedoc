@@ -1,4 +1,4 @@
-#include <vector>
+#include <map>
 #include "medicament.h"
 #include "client.h"
 using namespace std;
@@ -8,18 +8,17 @@ using namespace std;
 class Commande
 {
     private:
-        vector<Medicament*> articles;
         double total;
         Client client;
+        int livraison;
 
     public:
         Commande();
         Commande(Client*);
         ~Commande();
         void afficherDetails();
-        void ajouterMedicament(Medicament*);
-        void retirerMedicament(Medicament*);
         double getTotal();
+        map<Medicament*, int> getArticles();
 };
 
 #endif // COMMANDE_H

@@ -1,12 +1,14 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "connexion.h"
+#include "inscription.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setWindowTitle("Page d'accueil");
 }
 
 MainWindow::~MainWindow()
@@ -21,3 +23,11 @@ void MainWindow::on_btnConnexion_clicked()
     connexion->show();
     close();
 }
+
+void MainWindow::on_btnInscrire_clicked()
+{
+    Inscription* inscription = new Inscription();
+    inscription->show();
+    close();
+}
+

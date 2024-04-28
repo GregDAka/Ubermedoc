@@ -18,9 +18,10 @@ void Client::afficherDetails(){
     cout << "Solde : " << solde << endl
         << "Panier de " << nom << ": "<< endl;
     if(!panier.empty()){
-        for (Medicament* medoc : panier){
-            medoc->afficherDetails();
-            cout << "--------------------------------"<<endl;
+        for (const auto& entry : panier) {
+            entry.first->afficherDetails();
+            cout << "Quantite : " << entry.second << endl
+                << "--------------------------------"<<endl;
         }
         cout << "Total : " << totalPanier << " euro" << endl;
     }else{
@@ -34,15 +35,25 @@ void Client::inscrire(){
 }
 
 void Client::ajouterAuPanier(Medicament* medoc){
-    panier.push_back(medoc);
+    if (panier.find(medoc) != panier.end()){
+        panier[medoc] += 1;
+    }
+    else{
+        panier[medoc] = 1;
+    }
     totalPanier += medoc->getPrix();
 }
 
 void Client::retirerDuPanier(Medicament* medoc){
     int i = 0;
-    for (Medicament* med : panier){
-        if (med->getRef() == medoc->getRef()){
-            panier.erase(panier.begin() + i);
+    for (const auto& entry : panier) {
+        if (entry.first->getRef() == medoc->getRef()){
+            if (entry.second == 1){
+                panier.erase(entry.first);
+            }
+            else{
+                panier[entry.first] -= 1;
+            }
             totalPanier -= medoc->getPrix();
         }
         i++;
@@ -53,7 +64,7 @@ void Client::ajouterSolde(double valeur){
     solde += valeur;
 }
 
-vector<Medicament*> Client::getPanier(){
+map<Medicament*, int> Client::getPanier(){
     return panier;
 }
 
@@ -61,3 +72,6 @@ double Client::getTotalPanier(){
     return totalPanier;
 }
 
+void Client::viderPanier(){
+    panier.clear();
+}
