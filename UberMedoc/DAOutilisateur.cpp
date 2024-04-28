@@ -1,7 +1,6 @@
 #include "DAOutilisateur.h"
 #include <string>
 #include <iostream>
-
 using namespace std ;
 
 Utilisateur* DAOutilisateur::connexionUtilisateur(std::string mail, std::string mdp, QSqlDatabase db){
@@ -39,7 +38,7 @@ Utilisateur* DAOutilisateur::connexionUtilisateur(std::string mail, std::string 
 }
 
 
-Client DAOutilisateur::inscriptionUtilisateur(string nom, string prenom, string adresse, string mail, string mdp, QSqlDatabase db) {
+Client* DAOutilisateur::inscriptionUtilisateur(string nom, string prenom, string adresse, string mail, string mdp, QSqlDatabase db) {
 
     QSqlQuery requeteVerif(db);
     requeteVerif.prepare("SELECT COUNT(*) FROM utilisateur WHERE adrMail = :mail");
@@ -49,26 +48,26 @@ Client DAOutilisateur::inscriptionUtilisateur(string nom, string prenom, string 
 
     if (!requeteVerif.exec()) {
         std::cerr << "Erreur lors de l'exécution de la requête de vérification : " << requeteVerif.lastError().text().toStdString() << std::endl;
-        return Client();
+        return new Client();
     }
 
     requeteVerif.next(); // Récupère le premier résultat (le nombre d'occurrences)
     int count = requeteVerif.value(0).toInt(); // Récupère le nombre d'occurrences
-    cout<<count<<endl ;
 
     if (count > 0) {
         std::cout << "L'adresse e-mail est deja utilisee." << std::endl;
-        return Client();
+        return new Client();
     }
 
     QSqlQuery query(db);
-    query.prepare("INSERT INTO utilisateur (nom, prenom, adrMail, mdp, adresse) VALUES (:nom, :prenom, :mail, :mdp, :adresse)");
+    query.prepare("INSERT INTO utilisateur (nom, prenom, estAdmin, adrMail, mdp, adresse) VALUES (:nom, :prenom, 0, :mail, :mdp, :adresse)");
 
     QString qNom = QString::fromStdString(nom);
     QString qPrenom = QString::fromStdString(prenom);
     QString qMail = QString::fromStdString(mail);
     QString qAdresse = QString::fromStdString(adresse);
     QString qMdp = QString::fromStdString(mdp);
+
 
     query.bindValue(":nom", qNom);
     query.bindValue(":prenom", qPrenom);
@@ -77,11 +76,11 @@ Client DAOutilisateur::inscriptionUtilisateur(string nom, string prenom, string 
     query.bindValue(":adresse", qAdresse);
 
     if (!query.exec()) {
-        std::cerr << "Erreur d'insertion des données : " << query.lastError().text().toStdString() << std::endl;
-        return Client();
+        std::cerr << "Erreur d'insertion des donnees : " << query.lastError().text().toStdString() << std::endl;
+        return new Client();
     }
 
-    return Client(nom, prenom, adresse, mail, mdp);
+    return new Client(nom, prenom, adresse, mail, mdp);
 }
 
 
