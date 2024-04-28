@@ -5,8 +5,11 @@
 #include "medicament.h"
 #include "commande.h"
 #include "conBd.h"
-using namespace std;
+#include <QtSql/QSqlQuery>
 #include <QApplication>
+#include "DAOclient.h"
+
+using namespace std;
 
 int main(int argc, char *argv[])
 {
@@ -14,6 +17,7 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
+    /*
 
     //On créer des medocs
     Medicament dolipranne(1, "Dolipranne", 8.5);
@@ -36,6 +40,43 @@ int main(int argc, char *argv[])
     Commande com(&april);
     com.afficherDetails();
 
+    */
     connexionBD();
+
+    QSqlQuery query(db);
+
+    // Requête TEST SQL
+    if (query.exec("SELECT * FROM utilisateur")) {
+        // On parcours la requête
+        while (query.next()) {
+            QVariant id = query.value(0);
+            QVariant nom = query.value(1);
+            QVariant prenom = query.value(2);
+
+            // On affiche le résultat
+            std::cout << "ID: " << id.toInt() << ", Nom: " << nom.toString().toStdString()
+                      << ", Prenom: " << prenom.toString().toStdString() << std::endl;
+        }
+    } else {
+        // Si la requête a échoué on retourne un message d'erreur
+        std::cerr << "La requête SQL a échoué : " << query.lastError().text().toStdString() << std::endl;
+    }
+
+    DAOclient rqClient ;
+
+    Utilisateur* util = rqClient.connexionUtilisateur("benoit.benoit@gmail.com", "coucou", db);
+
+    if (util != nullptr) {
+        if (Client* client = dynamic_cast<Client*>(util)) {
+            client->afficherDetails(); // Appel de la méthode sur le pointeur client
+        } else {
+            cout << "Le type d'utilisateur n'est pas Client" << endl;
+        }
+    } else {
+        cout << "Aucun utilisateur trouvé" << endl;
+    }
+
+
+
     return a.exec();
 }
