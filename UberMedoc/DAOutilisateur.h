@@ -20,7 +20,7 @@ public :
      */
     Utilisateur* connexionUtilisateur(std::string mail, std::string mdp, QSqlDatabase db);
 
-    Client inscriptionUtilisateur(std::string nom, std::string prenom,std::string adresse,std::string mail,std::string mdp, QSqlDatabase db);
+    Client* inscriptionUtilisateur(std::string nom, std::string prenom,std::string adresse,std::string mail,std::string mdp, QSqlDatabase db);
 };
 
 #endif // DAOUTILISATEUR_H
