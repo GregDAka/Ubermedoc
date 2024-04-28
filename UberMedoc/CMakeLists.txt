@@ -35,6 +35,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         DAOutilisateur.h
         DAOutilisateur.cpp
         conBd.cpp
+        application.h application.cpp application.ui
+        panier.h panier.cpp panier.ui
+        compte.h compte.cpp compte.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET UberMedoc APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
