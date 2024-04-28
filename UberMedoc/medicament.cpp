@@ -3,8 +3,10 @@
 using namespace std;
 
 
+Medicament::Medicament(){}
+
 Medicament::Medicament(int refM, string nomM, double prixM){
-    ref = refM;
+    ref = refM ;
     nom = nomM;
     prix = prixM;
 }

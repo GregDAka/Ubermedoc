@@ -9,6 +9,7 @@
 #include <QtSql/QSqlQuery>
 #include <QApplication>
 #include "DAOutilisateur.h"
+#include "DAOmedicament.h"
 
 using namespace std;
 
@@ -83,6 +84,10 @@ int main(int argc, char *argv[])
 
     rqClient.inscriptionUtilisateur("Gabriel","Delemasure","Rue des beaux gosses","gabriel@leboss","coucou",db);
 
+    DAOmedicament rqMedoc ;
+    rqMedoc.ajouterMedoc("Smecta",6.5,db);
+    Medicament* smec = rqMedoc.ObjetMedoc("Smecta",db) ;
+    smec->afficherDetails() ;
 
     return a.exec();
 }

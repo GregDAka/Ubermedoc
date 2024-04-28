@@ -20,7 +20,22 @@ public :
      */
     Utilisateur* connexionUtilisateur(std::string mail, std::string mdp, QSqlDatabase db);
 
+    /**
+     * @brief inscriptionUtilisateur permet à un nouvel utilisateur de se créer un compte, si l'adresse mail est déjà utilisé alors l'inscription échoue et renvoie un Client vide.
+     * @param nom
+     * @param prenom
+     * @param adresse
+     * @param mail
+     * @param mdp
+     * @param db Base de donnée créer lors de l'appel de la fonction connexionBd.
+     * @return Renvoie un client, qui sera ensuite utilisé comme l'utilisateur du logiciel, si erreur, un client vide est renvoyé.
+     */
     Client* inscriptionUtilisateur(std::string nom, std::string prenom,std::string adresse,std::string mail,std::string mdp, QSqlDatabase db);
+
+
+    // void supprimerClient() --> Fonction d'utilisateur administrateur pour supprimer un client de la BD.
+
+    // void modifierClient() --> Fonction d'utilisateur administrateur pour modifier les données d'un client de la BD.
 };
 
 #endif // DAOUTILISATEUR_H
