@@ -5,6 +5,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlError>
+#include "utilisateur.h"
 #include "client.h"
 
 
@@ -16,7 +17,7 @@ public :
      * @param mail , c'est le parametre MAIL récupérer dans la fenêtre de saisie de la page connexion
      * @param mdp , c'est le parametre NOM récupérer dans la fenêtre de saisie de la page connexion
      */
-    Client connexionUtilisateur(std::string mail, std::string mdp, QSqlDatabase db);
+    Utilisateur* connexionUtilisateur(std::string mail, std::string mdp, QSqlDatabase db);
 };
 
 #endif // DAOCLIENT_H

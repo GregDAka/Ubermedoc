@@ -3,7 +3,7 @@
 
 using namespace std ;
 
-Client DAOclient::connexionUtilisateur(std::string mail, std::string mdp, QSqlDatabase db){
+Utilisateur* DAOclient::connexionUtilisateur(std::string mail, std::string mdp, QSqlDatabase db){
     QSqlQuery query(db); // Connexion normalement déjà établie, lors de l'éxécution de conBd, on a créer db variable eterne utilisable partout.
     query.prepare("SELECT * FROM utilisateur WHERE adrMail = :mail AND mdp = :mdp");
     // On prépare la requête car sinon les :mail et :mdp ne seront pas reconnu comme argument de la fonction utilisable dans la requête
@@ -22,18 +22,18 @@ Client DAOclient::connexionUtilisateur(std::string mail, std::string mdp, QSqlDa
             string nom = query.value(1).toString().toStdString(); // converti en QString puis en String
             string prenom = query.value(2).toString().toStdString();
             // string numTel = query.value(3).toString().toStdString();
-            // bool estAdmin = query.value(4).toBool();
+            bool estAdmin = query.value(4).toBool();
             string adrMail = query.value(5).toString().toStdString();
             string mdp = query.value(6).toString().toStdString();
             string adresse = query.value(7).toString().toStdString();
 
-            Client utilLog = Client(nom,prenom,adresse,adrMail,mdp) ;
-
-            return utilLog ;
+            if (estAdmin){
+                int a = 1 ;
+            }
+            else {
+                return new Client(nom,prenom,adresse,adrMail,mdp) ;
+            }
         }
-
-    } else {
-        qDebug() << "Erreur d'exécution de la requête:" << query.lastError().text();
     }
-    return Client();
+    return nullptr;
 }

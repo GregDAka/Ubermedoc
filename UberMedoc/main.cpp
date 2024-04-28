@@ -64,9 +64,19 @@ int main(int argc, char *argv[])
 
     DAOclient rqClient ;
 
-    Client Benoit = rqClient.connexionUtilisateur("benoit.benoit@gmail.com","coucou",db) ;
+    Utilisateur* util = rqClient.connexionUtilisateur("benoit.benoit@gmail.com", "coucou", db);
 
-    Benoit.afficherDetails() ;
+    if (util != nullptr) {
+        if (Client* client = dynamic_cast<Client*>(util)) {
+            client->afficherDetails(); // Appel de la méthode sur le pointeur client
+        } else {
+            cout << "Le type d'utilisateur n'est pas Client" << endl;
+        }
+    } else {
+        cout << "Aucun utilisateur trouvé" << endl;
+    }
+
+
 
     return a.exec();
 }
