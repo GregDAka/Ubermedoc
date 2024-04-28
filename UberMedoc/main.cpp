@@ -10,6 +10,7 @@
 #include <QApplication>
 #include "DAOutilisateur.h"
 #include "DAOmedicament.h"
+#include <iostream>
 
 using namespace std;
 

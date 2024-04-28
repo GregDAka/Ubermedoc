@@ -41,7 +41,9 @@ void Connexion::on_btnConfirmer_clicked()
     if (client == nullptr){
         cout << "Mot de passe ou mail introuvalbe" << endl;
     }else{
+        cout << "--Vous etes connecte--";
         client->afficherDetails();
+
     }
 
 
