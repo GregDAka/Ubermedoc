@@ -1,13 +1,14 @@
 #include "mainwindow.h"
 #include "client.h"
 #include "utilisateur.h"
+#include "administrateur.h"
 #include "client.h"
 #include "medicament.h"
 #include "commande.h"
 #include "conBd.h"
 #include <QtSql/QSqlQuery>
 #include <QApplication>
-#include "DAOclient.h"
+#include "DAOutilisateur.h"
 
 using namespace std;
 
@@ -62,20 +63,25 @@ int main(int argc, char *argv[])
         std::cerr << "La requête SQL a échoué : " << query.lastError().text().toStdString() << std::endl;
     }
 
-    DAOclient rqClient ;
+    DAOutilisateur rqClient ;
 
     Utilisateur* util = rqClient.connexionUtilisateur("benoit.benoit@gmail.com", "coucou", db);
 
     if (util != nullptr) {
         if (Client* client = dynamic_cast<Client*>(util)) {
-            client->afficherDetails(); // Appel de la méthode sur le pointeur client
-        } else {
-            cout << "Le type d'utilisateur n'est pas Client" << endl;
+            client->afficherDetails();
+        } else if (Administrateur* admin = dynamic_cast<Administrateur*>(util)){
+            admin->afficherDetails() ;
+        }
+        else{
+            cout<<"N'est pas de type administrateur ou client"<<endl ;
         }
     } else {
         cout << "Aucun utilisateur trouvé" << endl;
     }
 
+
+    rqClient.inscriptionUtilisateur("Gabriel","Delemasure","Rue des beaux gosses","gabriel@leboss","coucou",db);
 
 
     return a.exec();

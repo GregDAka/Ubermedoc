@@ -1,5 +1,5 @@
-#ifndef DAOCLIENT_H
-#define DAOCLIENT_H
+#ifndef DAOUTILISATEUR_H
+#define DAOUTILISATEUR_H
 
 #include <string>
 #include <QSqlDatabase>
@@ -7,9 +7,10 @@
 #include <QSqlError>
 #include "utilisateur.h"
 #include "client.h"
+#include "administrateur.h"
 
 
-class DAOclient{
+class DAOutilisateur{
 public :
     /**
      * @brief Cette fonction permet de vérifier la connexion d'un utilisateur en cherchant dans la base de donnée si l'adresse mail et
@@ -18,6 +19,8 @@ public :
      * @param mdp , c'est le parametre NOM récupérer dans la fenêtre de saisie de la page connexion
      */
     Utilisateur* connexionUtilisateur(std::string mail, std::string mdp, QSqlDatabase db);
+
+    Client inscriptionUtilisateur(std::string nom, std::string prenom,std::string adresse,std::string mail,std::string mdp, QSqlDatabase db);
 };
 
-#endif // DAOCLIENT_H
+#endif // DAOUTILISATEUR_H
