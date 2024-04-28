@@ -4,6 +4,7 @@
 #include "client.h"
 #include "medicament.h"
 #include "commande.h"
+#include "conBd.h"
 using namespace std;
 #include <QApplication>
 
@@ -12,6 +13,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
+
 
     //On créer des medocs
     Medicament dolipranne(1, "Dolipranne", 8.5);
@@ -33,5 +35,7 @@ int main(int argc, char *argv[])
     //ça juste à récup son panier et le prix du panier (attribut totalPanier)
     Commande com(&april);
     com.afficherDetails();
+
+    connexionBD();
     return a.exec();
 }
