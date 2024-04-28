@@ -1,6 +1,8 @@
 #include "connexion.h"
 #include "ui_connexion.h"
 #include "mainwindow.h"
+#include <iostream>
+using namespace std;
 
 Connexion::Connexion(QWidget *parent)
     : QWidget(parent)
@@ -25,6 +27,6 @@ void Connexion::on_btnRetour_clicked()
 
 void Connexion::on_btnConfirmer_clicked()
 {
-    //
+    cout << "Confirmer" << endl;
 }
 

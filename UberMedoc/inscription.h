@@ -2,7 +2,7 @@
 #define INSCRIPTION_H
 
 #include <QWidget>
-
+#include <QLineEdit>
 namespace Ui {
 class Inscription;
 }
@@ -17,9 +17,12 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+    void on_pushButton2_clicked();
 
 private:
     Ui::Inscription *ui;
+
+    QLineEdit lineEdit;
 };
 
 #endif // INSCRIPTION_H
