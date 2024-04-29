@@ -49,7 +49,6 @@ Medicament* DAOmedicament::ObjetMedoc(string nom,QSqlDatabase db){
 
     query.next();
     int count = query.value(0).toInt();
-    cout<<count<<endl ;
 
     if (count == 0) { // Si aucun médicament n'est trouvé à ce nom dans la BD on envoie une erreur.
         std::cout << "Ce medicament n'est pas présent dans la base de donnee." << std::endl;
@@ -66,7 +65,6 @@ Medicament* DAOmedicament::ObjetMedoc(string nom,QSqlDatabase db){
         else {
             while (query.next()) {
                 int refO = query.value(0).toInt();
-                cout<<refO<<endl ;
                 string nomO = query.value(1).toString().toStdString();
                 double prixO = query.value(2).toDouble();
                 return new Medicament(refO,nomO,prixO) ;
