@@ -11,7 +11,7 @@
     parcourir le panier et pour chaque médicament créer une ligne dans ligne commande avec le id de la command, la reference du medoc, et la quantite
     */
 
-void DAOcommande::recupCommande(SqlDatabase db){ // ???
+void DAOcommande::recupCommande(QSqlDatabase db){ // ???
 
 }
 
