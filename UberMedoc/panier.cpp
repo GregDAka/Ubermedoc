@@ -78,18 +78,32 @@ void Panier::on_pushButton_2_clicked(){
 void Panier::on_pushButton_4_clicked(){
 
     if (m_client->getTotalPanier() <= m_client->getSolde()){
-        m_client->retirerSolde(m_client->getTotalPanier());
-        m_client->viderPanier();
-        close();
-        MesCommandes* mesCommande = new MesCommandes(m_client);
-        mesCommande -> show();
-        //insertion commande dans la bd
+        if(!m_client->getPanier().empty()){
+            m_client->retirerSolde(m_client->getTotalPanier());
+            m_client->viderPanier();
+            close();
+            MesCommandes* mesCommande = new MesCommandes(m_client);
+            mesCommande -> show();
+            //insertion commande dans la bd
+        }else{
+            // Créer une boîte de message
+            QMessageBox msgBox;
+            msgBox.setWindowTitle("Pas si vite...");
+            msgBox.setText("Panier vide !");
+            msgBox.setIcon(QMessageBox::Information);
+            msgBox.setFixedSize(800, 400);
+            // Ajouter un bouton "OK"
+            msgBox.addButton(QMessageBox::Ok);
+
+            // Afficher la boîte de message
+            msgBox.exec();
+        }
     }else{
         // Créer une boîte de message
         QMessageBox msgBox;
-        msgBox.setWindowTitle("Pas si vite !");
-        msgBox.setText("Solde insuffisant");
-
+        msgBox.setWindowTitle("Pas si vite...");
+        msgBox.setText("Solde insuffisant !");
+        msgBox.setIcon(QMessageBox::Information);
         // Ajouter un bouton "OK"
         msgBox.addButton(QMessageBox::Ok);
 

@@ -1,4 +1,5 @@
 #include "connexion.h"
+#include "adminapp.h"
 #include "conbd.h"
 #include "ui_connexion.h"
 #include "mainwindow.h"
@@ -38,16 +39,22 @@ void Connexion::on_btnConfirmer_clicked()
     tmp = mdpConnexion->text();
     string mdp = tmp.toStdString();
     DAOutilisateur uti;
-    Client* client = dynamic_cast<Client*>(uti.connexionUtilisateur(mail, mdp, db));
-    if (client == nullptr){
+    Utilisateur* u = uti.connexionUtilisateur(mail, mdp, db);
+    if (u == nullptr){
         cout << "Mot de passe ou mail introuvalbe" << endl;
     }else{
-        cout << "--Vous etes connecte--";
-        close();
-        Application* app = new Application(client);
-        app->show();
+        if (!uti.estAdmin(mail, mdp, db)){
+            Client* client = dynamic_cast<Client*>(u);
+            cout << "--Vous etes connecte--";
+            close();
+            Application* app = new Application(client);
+            app->show();
+        }else{
+            close();
+            AdminApp* app = new AdminApp();
+            app->show();
+        }
     }
-
 
 
 
