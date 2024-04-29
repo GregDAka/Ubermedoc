@@ -104,6 +104,7 @@ void Panier::on_pushButton_4_clicked(){
         msgBox.setWindowTitle("Pas si vite...");
         msgBox.setText("Solde insuffisant !");
         msgBox.setIcon(QMessageBox::Information);
+
         // Ajouter un bouton "OK"
         msgBox.addButton(QMessageBox::Ok);
 

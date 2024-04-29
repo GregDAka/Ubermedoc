@@ -1,10 +1,11 @@
 #include "connexion.h"
 #include "adminapp.h"
 #include "conbd.h"
+#include "qmessagebox.h"
 #include "ui_connexion.h"
 #include "mainwindow.h"
 #include "DAOutilisateur.h"
-#include <iostream>
+#include <string>
 #include "application.h"
 using namespace std;
 
@@ -41,11 +42,19 @@ void Connexion::on_btnConfirmer_clicked()
     DAOutilisateur uti;
     Utilisateur* u = uti.connexionUtilisateur(mail, mdp, db);
     if (u == nullptr){
-        cout << "Mot de passe ou mail introuvalbe" << endl;
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Oups !");
+        msgBox.setText("Mot de passe ou mail incorrect");
+        msgBox.setIcon(QMessageBox::Information);
+
+        // Ajouter un bouton "OK"
+        msgBox.addButton(QMessageBox::Ok);
+
+        // Afficher la boîte de message
+        msgBox.exec();
     }else{
         if (!uti.estAdmin(mail, mdp, db)){
             Client* client = dynamic_cast<Client*>(u);
-            cout << "--Vous etes connecte--";
             close();
             Application* app = new Application(client);
             app->show();
