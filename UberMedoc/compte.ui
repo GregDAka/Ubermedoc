@@ -193,8 +193,8 @@ QPushButton#pushButton_3:hover {
         <number>0</number>
        </property>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="30,70">
-         <item alignment="Qt::AlignRight">
+        <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="40,60">
+         <item alignment="Qt::AlignHCenter">
           <widget class="QLabel" name="label_3">
            <property name="font">
             <font>
@@ -221,8 +221,8 @@ QPushButton#pushButton_3:hover {
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="30,70">
-         <item alignment="Qt::AlignRight">
+        <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="40,60">
+         <item alignment="Qt::AlignHCenter">
           <widget class="QLabel" name="label_4">
            <property name="font">
             <font>
@@ -249,8 +249,8 @@ QPushButton#pushButton_3:hover {
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="30,70">
-         <item alignment="Qt::AlignRight">
+        <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="40,60">
+         <item alignment="Qt::AlignHCenter">
           <widget class="QLabel" name="label_5">
            <property name="font">
             <font>
@@ -277,8 +277,8 @@ QPushButton#pushButton_3:hover {
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="30,70">
-         <item alignment="Qt::AlignRight">
+        <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="40,60">
+         <item alignment="Qt::AlignHCenter">
           <widget class="QLabel" name="label_6">
            <property name="font">
             <font>
@@ -305,8 +305,8 @@ QPushButton#pushButton_3:hover {
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="30,70">
-         <item alignment="Qt::AlignRight">
+        <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="40,60">
+         <item alignment="Qt::AlignHCenter">
           <widget class="QLabel" name="label_7">
            <property name="font">
             <font>
