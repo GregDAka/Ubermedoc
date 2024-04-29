@@ -8,6 +8,7 @@
 #include "conBd.h"
 #include <QtSql/QSqlQuery>
 #include <QApplication>
+#include "DAOcommande.h"
 #include "application.h"
 #include "DAOutilisateur.h"
 #include "DAOmedicament.h"
@@ -108,6 +109,14 @@ int main(int argc, char *argv[])
     smec->afficherDetails() ;
 
     */
+    cout<<"TEST REQUETE DE COMMANDE"<<endl ;
+    DAOcommande rqCommande ;
+    vector<pair<string, int>> liste = rqCommande.recupCommande("benoit.benoit@gmail.com",1,db) ;
+    cout << "Taille du vecteur: " << liste.size() << "\n";
+    for (const auto& pair : liste) {
+        cout << "Nom Medoc: " << pair.first << ", Quantite: " << pair.second << "\n";
+    }
+    cout<<"FIN DU TEST"<<endl ;
 
     return a.exec();
 }

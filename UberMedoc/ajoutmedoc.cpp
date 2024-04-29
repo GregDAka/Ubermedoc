@@ -41,5 +41,5 @@ void AjoutMedoc::on_pushButton_2_clicked(){
     med.ajouterMedoc(nom, prix, db);
     close();
     //Application* app = new Application(m_client);
-    //app -> show();
+    //app -> show(); coucou
 }
