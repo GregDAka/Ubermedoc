@@ -32,6 +32,8 @@ public :
      */
     Client* inscriptionUtilisateur(std::string nom, std::string prenom,std::string adresse,std::string mail,std::string mdp, QSqlDatabase db);
 
+    int getIdClientDAO(std::string mail,QSqlDatabase db);
+
 
     // void supprimerClient() --> Fonction d'utilisateur administrateur pour supprimer un client de la BD.
 

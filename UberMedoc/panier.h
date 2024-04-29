@@ -4,6 +4,7 @@
 #include "qlabel.h"
 #include "qlistwidget.h"
 #include "qpushbutton.h"
+#include "client.h"
 #include <QWidget>
 #include "client.h"
 namespace Ui {

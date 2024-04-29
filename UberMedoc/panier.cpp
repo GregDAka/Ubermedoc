@@ -5,6 +5,7 @@
 #include "application.h"
 #include <string>
 #include <QMessageBox>
+#include "client.h"
 
 Panier::Panier(Client* cl, QWidget *parent)
     : QWidget(parent)
@@ -75,6 +76,7 @@ void Panier::on_pushButton_2_clicked(){
 }
 
 void Panier::on_pushButton_4_clicked(){
+
     if (m_client->getTotalPanier() <= m_client->getSolde()){
         m_client->retirerSolde(m_client->getTotalPanier());
         m_client->viderPanier();
@@ -94,6 +96,7 @@ void Panier::on_pushButton_4_clicked(){
         // Afficher la boîte de message
         msgBox.exec();
     }
+
 
 }
 
