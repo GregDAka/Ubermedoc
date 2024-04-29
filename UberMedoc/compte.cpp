@@ -9,6 +9,7 @@ Compte::Compte(Client* cl, QWidget *parent)
     , ui(new Ui::Compte)
 {
     ui->setupUi(this);
+    setWindowTitle("Mon compte");
 
     m_client = cl;
 
@@ -22,10 +23,19 @@ Compte::Compte(Client* cl, QWidget *parent)
     if(m_client != nullptr){
         QString nom = QString::fromStdString(m_client->getNom());
         QString prenom = QString::fromStdString(m_client->getPrenom());
+        QString mail = QString::fromStdString(m_client->getMail());
+        QString mdp = QString::fromStdString(m_client->getMdp());
+        QString adresse = QString::fromStdString(m_client->getAdresse());
+
 
         //mise à jour des labels
         ui->label->setText(nom);
         ui->label_2->setText(prenom);
+        ui->label_8->setText(nom);
+        ui->label_9->setText(prenom);
+        ui->label_10->setText(mail);
+        ui->label_11->setText(mdp);
+        ui->label_12->setText(adresse);
     }
 }
 

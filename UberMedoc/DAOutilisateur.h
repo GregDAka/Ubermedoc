@@ -34,6 +34,7 @@ public :
 
     int getIdClientDAO(std::string mail,QSqlDatabase db);
 
+    bool estAdmin(std::string mail, std::string mdp,QSqlDatabase db);
 
     // void supprimerClient() --> Fonction d'utilisateur administrateur pour supprimer un client de la BD.
 

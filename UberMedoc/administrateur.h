@@ -15,6 +15,7 @@ class Administrateur : public Utilisateur
         ~Administrateur();
         void afficherDetails();
 
+
 };
 
 #endif // ADMINISTRATEUR_H

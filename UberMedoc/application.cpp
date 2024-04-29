@@ -81,19 +81,35 @@ void Application::on_pushButton_3_clicked(){
 
 void Application::on_pushButton_4_clicked(){
     DAOmedicament rqMedoc;
-    Medicament* medoc = rqMedoc.ObjetMedoc(recupClic,db);
-    m_client->ajouterAuPanier(medoc);
+    if (recupClic != ""){
+        Medicament* medoc = rqMedoc.ObjetMedoc(recupClic,db);
+        m_client->ajouterAuPanier(medoc);
 
-    QMessageBox msgBox;
-    msgBox.setWindowTitle("Information");
-    msgBox.setText("Médicament ajouté");
-    msgBox.setIcon(QMessageBox::Information);
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Bonne nouvelle");
+        msgBox.setText("Médicament ajouté");
+        msgBox.setIcon(QMessageBox::Information);
 
-    // Ajouter un bouton "OK"
-    msgBox.addButton(QMessageBox::Ok);
+        // Ajouter un bouton "OK"
+        msgBox.addButton(QMessageBox::Ok);
 
-    // Afficher la boîte de message
-    msgBox.exec();
+        // Afficher la boîte de message
+        msgBox.exec();
+    }else{
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Pas si vite...");
+        msgBox.setText("Aucun médicament séléctioné");
+        msgBox.setIcon(QMessageBox::Information);
+
+        // Ajouter un bouton "OK"
+        msgBox.addButton(QMessageBox::Ok);
+
+        // Afficher la boîte de message
+        msgBox.exec();
+
+    }
+
+
 }
 
 void Application::onListViewClicked(const QModelIndex &index){
@@ -106,8 +122,6 @@ void Application::modifMedocSelec(string medocselec){
     DAOmedicament rqMedoc ;
     Medicament* medoc = rqMedoc.ObjetMedoc(medocselec,db) ;
 
-    cout<<medoc->getNom()<<endl ;
-    cout<<medoc->getPrix()<<endl ;
     // On converti le nom du médicament de type String récupéré par le GET en Qstring pour pouvoir changer le Label
     QString nomConvert = QString::fromStdString(medoc->getNom());
     label_2->setText(nomConvert); // Label_2 fait référence au Label (text) Label_2 dans l'application.ui.
