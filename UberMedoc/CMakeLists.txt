@@ -40,6 +40,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         compte.h compte.cpp compte.ui
         DAOmedicament.h
         DAOmedicament.cpp
+        mescommandes.h mescommandes.cpp mescommandes.ui
+        ajoutmedoc.h ajoutmedoc.cpp ajoutmedoc.ui
+        adminapp.h adminapp.cpp adminapp.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET UberMedoc APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
