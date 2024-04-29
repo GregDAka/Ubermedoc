@@ -3,6 +3,13 @@
 
 #include <QWidget>
 #include <QPushButton>
+#include <QStringListModel>
+#include <QLabel>
+#include "ui_application.h"
+#include <string>
+
+
+
 namespace Ui {
 class Application;
 }
@@ -14,6 +21,8 @@ class Application : public QWidget
 public:
     explicit Application(QWidget *parent = nullptr);
     ~Application();
+    void onListViewClicked(const QModelIndex &index) ;
+    void modifMedocSelec(std::string medocselec) ;
 
 private slots:
     void on_pushButton_clicked();
@@ -28,6 +37,9 @@ private:
     QPushButton* pushButton_2;
     QPushButton* pushButton_3;
     QPushButton* pushButton_4;
+    std::string recupClic ;
+    QLabel* label_2 ;
+    QLabel* label_3 ;
 };
 
 #endif // APPLICATION_H
