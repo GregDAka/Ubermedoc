@@ -16,6 +16,8 @@ class MesCommandes : public QWidget
 public:
     explicit MesCommandes(Client* cl, QWidget *parent = nullptr);
     ~MesCommandes();
+    void onListViewClicked(const QModelIndex &index) ;
+    void chargerBloc(int) ;
 
 private slots:
     void on_pushButton_2_clicked();

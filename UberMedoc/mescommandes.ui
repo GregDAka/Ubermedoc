@@ -162,7 +162,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QListWidget" name="listWidget">
+        <widget class="QListView" name="listView">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -187,7 +187,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QListView" name="listView">
+        <widget class="QListView" name="listView2">
          <property name="font">
           <font>
            <pointsize>12</pointsize>

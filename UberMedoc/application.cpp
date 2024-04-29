@@ -34,24 +34,26 @@ Application::Application(Client* client, QWidget *parent)
     pushButton_3 = findChild<QPushButton*>("pushButton_3");
     pushButton_4 = findChild<QPushButton*>("pushButton_4");
 
+    // On associe les attributs label aux labels qu'on voit sur le logiciel.
     label_2 = ui->label_2;
     label_3 = ui->label_3;
 
+    // On créer une liste de QString pour pouvoir, c'est cette liste qui sera affiché dans le ListView
     QStringList list;
 
+    // On récupère tous les médicaments de la BD et on les ajoute à la liste.
     QSqlQuery query(db);
     if (query.exec("SELECT nom FROM medicament") ) {
         while(query.next()){
             QString nomMedicament = query.value("nom").toString();
             list.append(nomMedicament);
         }
+        // On créer un model avec la liste qu'on vient de créer.
+        QStringListModel *model = new QStringListModel(list, this);
+        // Associer le modèle à la QListView
+        ui->listView->setModel(model);
+        connect(ui->listView, &QListView::clicked, this, &Application::onListViewClicked);
     }
-    // On créer un model avec la liste qu'on vient de créer.
-    QStringListModel *model = new QStringListModel(list, this);
-    // Associer le modèle à la QListView
-    ui->listView->setModel(model);
-    connect(ui->listView, &QListView::clicked, this, &Application::onListViewClicked);
-
 }
 
 Application::~Application()
