@@ -3,6 +3,7 @@
 #include "conbd.h"
 #include "ui_inscription.h"
 #include "mainwindow.h"
+#include "application.h"
 #include <string>
 #include <QString>
 #include <iostream>
@@ -59,8 +60,8 @@ void Inscription::on_pushButton_2_clicked(){
     }else{
         client->afficherDetails();
         close();
-        Application* app = new Application(/*client*/);
-        app->show();
+        Application* application = new Application(client);
+        application->show();
     }
 }
 

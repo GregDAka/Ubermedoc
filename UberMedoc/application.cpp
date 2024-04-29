@@ -1,5 +1,6 @@
 #include "application.h"
 #include "ui_application.h"
+#include "client.h"
 #include "mescommandes.h"
 #include "compte.h"
 #include "panier.h"
@@ -8,14 +9,24 @@
 #include "DAOmedicament.h"
 using namespace std ;
 
-
-Application::Application(QWidget *parent)
+Application::Application(Client* client, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Application)
+    , m_client(client)
 {
     ui->setupUi(this);
     setWindowTitle("Application");
 
+
+
+    if(m_client != nullptr){
+        QString nom = QString::fromStdString(m_client->getNom());
+        QString prenom = QString::fromStdString(m_client->getPrenom());
+
+        //mise à jour des labels
+        ui->nomLabel->setText(nom);
+        ui->prenomLabel->setText(prenom);
+    }
 
     pushButton = findChild<QPushButton*>("pushButton");
     pushButton_2 = findChild<QPushButton*>("pushButton_2");
@@ -92,3 +103,4 @@ void Application::modifMedocSelec(string medocselec){
     label_3->setText(prixConverti) ;
 
 }
+

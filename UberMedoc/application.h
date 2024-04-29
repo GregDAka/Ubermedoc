@@ -2,6 +2,8 @@
 #define APPLICATION_H
 
 #include <QWidget>
+#include <QLabel>
+#include "client.h"
 #include <QPushButton>
 #include <QStringListModel>
 #include <QLabel>
@@ -19,7 +21,7 @@ class Application : public QWidget
     Q_OBJECT
 
 public:
-    explicit Application(QWidget *parent = nullptr);
+    explicit Application(Client* client, QWidget *parent = nullptr);
     ~Application();
     void onListViewClicked(const QModelIndex &index) ;
     void modifMedocSelec(std::string medocselec) ;
@@ -32,6 +34,10 @@ private slots:
 
 private:
     Ui::Application *ui;
+
+    Client* m_client;
+    QLabel* nomLabel;
+    QLabel* prenomLabel;
 
     QPushButton* pushButton;
     QPushButton* pushButton_2;
