@@ -45,7 +45,7 @@ void Connexion::on_btnConfirmer_clicked()
         cout << "--Vous etes connecte--";
         client->afficherDetails();
         close();
-        Application* app = new Application(/*client*/);
+        Application* app = new Application(client);
         app->show();
     }
 

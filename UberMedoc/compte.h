@@ -1,9 +1,10 @@
 #ifndef COMPTE_H
 #define COMPTE_H
 
+#include "qlabel.h"
 #include "qpushbutton.h"
 #include <QWidget>
-
+#include "client.h"
 namespace Ui {
 class Compte;
 }
@@ -13,7 +14,7 @@ class Compte : public QWidget
     Q_OBJECT
 
 public:
-    explicit Compte(QWidget *parent = nullptr);
+    explicit Compte(Client* m_client, QWidget *parent = nullptr);
     ~Compte();
 
 private slots:
@@ -24,6 +25,11 @@ private slots:
 
 private:
     Ui::Compte *ui;
+
+    Client* m_client;
+
+    QLabel* label;
+    QLabel* label_2;
 
     QPushButton* pushButton;
     QPushButton* pushButton_2;

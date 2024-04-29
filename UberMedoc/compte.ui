@@ -41,6 +41,9 @@ margin-right:250px;
      </property>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>6</number>
+       </property>
        <item alignment="Qt::AlignRight">
         <widget class="QLabel" name="label">
          <property name="font">

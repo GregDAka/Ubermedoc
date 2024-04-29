@@ -26,8 +26,8 @@ AjoutMedoc::~AjoutMedoc()
 
 void AjoutMedoc::on_pushButton_clicked(){
     close();
-    Application* app = new Application();
-    app -> show();
+    //Application* app = new Application(m_client);
+    //app -> show();
 }
 
 void AjoutMedoc::on_pushButton_2_clicked(){
@@ -39,6 +39,6 @@ void AjoutMedoc::on_pushButton_2_clicked(){
     DAOmedicament med;
     med.ajouterMedoc(nom, prix, db);
     close();
-    Application* app = new Application();
-    app -> show();
+    //Application* app = new Application(m_client);
+    //app -> show();
 }

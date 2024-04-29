@@ -1,8 +1,10 @@
 #ifndef MESCOMMANDES_H
 #define MESCOMMANDES_H
 
+#include "qlabel.h"
 #include <QWidget>
 #include <QPushButton>
+#include "client.h"
 namespace Ui {
 class MesCommandes;
 }
@@ -12,7 +14,7 @@ class MesCommandes : public QWidget
     Q_OBJECT
 
 public:
-    explicit MesCommandes(QWidget *parent = nullptr);
+    explicit MesCommandes(Client* cl, QWidget *parent = nullptr);
     ~MesCommandes();
 
 private slots:
@@ -23,6 +25,12 @@ private slots:
 
 private:
     Ui::MesCommandes *ui;
+
+    Client* m_client;
+
+    QLabel* label;
+    QLabel* label_2;
+
     QPushButton* pushButton_2;
     QPushButton* pushButton_5;
     QPushButton* pushButton_3;
