@@ -2,6 +2,7 @@
 #define PANIER_H
 
 #include "qpushbutton.h"
+#include "client.h"
 #include <QWidget>
 
 namespace Ui {
@@ -27,6 +28,7 @@ private slots:
 
 private:
     Ui::Panier *ui;
+    Client* m_client;
 
     QPushButton* pushButton;
     QPushButton* pushButton_2;

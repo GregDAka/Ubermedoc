@@ -3,11 +3,13 @@
 #include "mescommandes.h"
 #include "compte.h"
 #include "application.h"
+#include "client.h"
 
 
 Panier::Panier(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Panier)
+    , m_client(client)
 {
     ui->setupUi(this);
 
@@ -38,7 +40,7 @@ void Panier::on_pushButton_2_clicked(){
 }
 
 void Panier::on_pushButton_4_clicked(){
-    //comander panier
+
 }
 
 void Panier::on_pushButton_5_clicked(){
