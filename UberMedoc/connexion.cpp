@@ -4,6 +4,7 @@
 #include "mainwindow.h"
 #include "DAOutilisateur.h"
 #include <iostream>
+#include "application.h"
 using namespace std;
 
 Connexion::Connexion(QWidget *parent)
@@ -43,8 +44,12 @@ void Connexion::on_btnConfirmer_clicked()
     }else{
         cout << "--Vous etes connecte--";
         client->afficherDetails();
-
+        close();
+        Application* app = new Application(/*client*/);
+        app->show();
     }
+
+
 
 
     // Quand on confirme, les champs entrer sont paramètre d'une requête SQL qui vérifie si l'adresse Mail et le MDP sont présent dans la base.
