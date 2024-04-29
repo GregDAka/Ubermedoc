@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 {
     connexionBD();
     QApplication a(argc, argv);
-    Application w;
+    MainWindow w;
     w.show();
 
     /*
