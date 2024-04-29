@@ -8,6 +8,7 @@
 #include "conBd.h"
 #include <QtSql/QSqlQuery>
 #include <QApplication>
+#include "application.h"
 #include "DAOutilisateur.h"
 #include "DAOmedicament.h"
 #include <iostream>
@@ -16,11 +17,14 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
+    connexionBD();
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
 
     /*
+     *
+     * ----------------------- TEST OBJET ------------------------------
 
     //On créer des medocs
     Medicament dolipranne(1, "Dolipranne", 8.5);
@@ -44,11 +48,13 @@ int main(int argc, char *argv[])
     com.afficherDetails();
 
     */
-    connexionBD();
 
-    QSqlQuery query(db);
+    // QSqlQuery query(db);
 
-    // Requête TEST SQL
+    // ----------------------- Requête TEST SQL -----------------------
+
+    /*
+     *
     if (query.exec("SELECT * FROM utilisateur")) {
         // On parcours la requête
         while (query.next()) {
@@ -64,6 +70,12 @@ int main(int argc, char *argv[])
         // Si la requête a échoué on retourne un message d'erreur
         std::cerr << "La requête SQL a échoué : " << query.lastError().text().toStdString() << std::endl;
     }
+
+    */
+
+    // ----------------------- TEST DAO CLIENT -----------------------
+
+    /*
 
     DAOutilisateur rqClient ;
 
@@ -82,13 +94,20 @@ int main(int argc, char *argv[])
         cout << "Aucun utilisateur trouvé" << endl;
     }
 
-
     rqClient.inscriptionUtilisateur("Gabriel","Delemasure","Rue des beaux gosses","gabriel@leboss","coucou",db);
 
+    */
+
+    // ----------------------- TEST DAO MEDOC -----------------------
+
+    /*
+     *
     DAOmedicament rqMedoc ;
     rqMedoc.ajouterMedoc("Smecta",6.5,db);
     Medicament* smec = rqMedoc.ObjetMedoc("Smecta",db) ;
     smec->afficherDetails() ;
+
+    */
 
     return a.exec();
 }
