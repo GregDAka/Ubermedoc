@@ -2,6 +2,7 @@
 #include "conbd.h"
 #include "ui_inscription.h"
 #include "mainwindow.h"
+#include "application.h"
 #include <string>
 #include <QString>
 #include <iostream>
@@ -56,7 +57,9 @@ void Inscription::on_pushButton_2_clicked(){
     if (client == nullptr){
         cout << "Mot de passe ou mail introuvalbe" << endl;
     }else{
-        client->afficherDetails();
+        close();
+        Application* application = new Application(client);
+        application->show();
     }
 }
 

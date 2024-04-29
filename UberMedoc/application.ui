@@ -36,19 +36,7 @@
      </property>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
-       <item alignment="Qt::AlignRight">
-        <widget class="QLabel" name="nomLabel">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Nom</string>
-         </property>
-        </widget>
-       </item>
-       <item alignment="Qt::AlignLeft">
+       <item>
         <widget class="QLabel" name="prenomLabel">
          <property name="font">
           <font>
@@ -57,6 +45,21 @@
          </property>
          <property name="text">
           <string>Prenom</string>
+         </property>
+         <property name="margin">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="nomLabel">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Nom</string>
          </property>
         </widget>
        </item>
