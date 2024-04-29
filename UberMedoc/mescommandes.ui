@@ -13,6 +13,34 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+background-color:#262626;
+color:#DADADA
+}
+QPushButton {
+    background-color: #303030; /* Use the same background color as QWidget */
+    border: 1px solid #DADADA; /* Use a contrasting border color */
+    padding: 5px 10px; /* Padding */
+    border-radius: 3px; /* Rounded corners */
+    color: #DADADA; /* Use the same text color as QWidget */
+    min-width: 80px; /* Minimum width */
+}
+
+QPushButton:hover {
+    background-color: #404040; /* Slightly lighter color when hovered */
+}
+
+QPushButton:pressed {
+    background-color: #202020; /* Slightly darker color when pressed */
+}
+QPushButton#pushButton {
+	background-color: #404040;
+}
+QPushButton#pushButton:hover {
+	background-color: #404040;
+}</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,9">
    <property name="spacing">
     <number>0</number>
@@ -21,13 +49,13 @@
     <number>0</number>
    </property>
    <property name="topMargin">
-    <number>0</number>
+    <number>1</number>
    </property>
    <property name="rightMargin">
-    <number>0</number>
+    <number>1</number>
    </property>
    <property name="bottomMargin">
-    <number>0</number>
+    <number>1</number>
    </property>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="25,25,0,25,25">
@@ -148,6 +176,9 @@
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <property name="spacing">
         <number>3</number>
+       </property>
+       <property name="leftMargin">
+        <number>1</number>
        </property>
        <item alignment="Qt::AlignHCenter">
         <widget class="QLabel" name="label_3">
