@@ -62,6 +62,12 @@ QPushButton#pushButton_3:hover {
      <property name="spacing">
       <number>0</number>
      </property>
+     <property name="topMargin">
+      <number>1</number>
+     </property>
+     <property name="rightMargin">
+      <number>2</number>
+     </property>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <property name="spacing">

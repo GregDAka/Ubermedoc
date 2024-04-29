@@ -39,6 +39,24 @@ Utilisateur* DAOutilisateur::connexionUtilisateur(std::string mail, std::string 
     return nullptr;
 }
 
+bool DAOutilisateur::estAdmin(std::string mail, std::string mdp, QSqlDatabase db){
+    QSqlQuery query(db);
+    query.prepare("SELECT * FROM utilisateur WHERE adrMail = :mail AND mdp = :mdp");
+
+    QString qMail = QString::fromStdString(mail);
+    QString qMdp = QString::fromStdString(mdp);
+
+    query.bindValue(":mail", qMail);
+    query.bindValue(":mdp", qMdp);
+    bool estAdmin = false;
+    if (query.exec()) {
+        while (query.next()) {
+            return estAdmin = query.value(3).toBool();
+        }
+    }
+}
+
+
 
 Client* DAOutilisateur::inscriptionUtilisateur(string nom, string prenom, string adresse, string mail, string mdp, QSqlDatabase db) {
 
@@ -85,12 +103,7 @@ Client* DAOutilisateur::inscriptionUtilisateur(string nom, string prenom, string
     return new Client(nom, prenom, adresse, mail, mdp);
 }
 
-int getIdClientDAO(std::string mail, QSqlDatabase db) {
-    if (!db.open()) {
-        qDebug() << "Impossible d'ouvrir la base de données";
-        return -1;
-    }
-
+int getIdClientDAO(std::string mail,QSqlDatabase db) {
     QSqlQuery query(db);
     query.prepare("SELECT id FROM clients WHERE mail = :mail");
     query.bindValue(":mail", QString::fromStdString(mail));

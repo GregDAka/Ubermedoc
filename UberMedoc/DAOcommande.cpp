@@ -6,6 +6,7 @@
 
 using namespace std ;
 
+
 vector<pair<string, int>> DAOcommande::recupCommande(string mail, int numCommande, QSqlDatabase db){
     QSqlQuery query(db); // On fait une requête qui récupère la commande voulu (idCommande passé en parametre) pour l'utilisateur connecté
     query.prepare("SELECT medicament.nom, quantite "
@@ -33,6 +34,7 @@ vector<pair<string, int>> DAOcommande::recupCommande(string mail, int numCommand
     }
     return listeMedocCommande ;
 }
+
 
 void createCommande(int idClient, QSqlDatabase db) {
     QSqlQuery query(db);
@@ -64,4 +66,28 @@ int getIdCommande(int idClient, QSqlDatabase db){
         return -1;
     }
 }
+
+void createLigneCommande(int idCommande, int ref, int quant, QSqlDatabase db){
+    QSqlQuery query(db);
+    query.prepare("INSERT INTO ligne_commande (idCommande,reference,quantite) VALUES (:idCommande,:ref,:quant)");
+    query.bindValue(":idCommande",idCommande);
+    query.bindValue(":ref",ref);
+    query.bindValue(":quant",quant);
+
+    if (!query.exec()) {
+        qDebug() << "Erreur lors de l'insertion de la commande :" << query.lastError().text();
+        return;
+    }
+
+    qDebug() << "Nouvelle commande insérée avec succès ";
+}
+
+
+
+
+
+
+
+
+
 

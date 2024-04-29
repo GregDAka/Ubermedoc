@@ -7,6 +7,12 @@
 #include "client.h"
 #include <QWidget>
 #include "client.h"
+#include "DAOcommande.h"
+#include "DAOutilisateur.h"
+#include "QSqlDatabase"
+
+
+
 namespace Ui {
 class Panier;
 }
@@ -30,8 +36,9 @@ private slots:
 
 private:
     Ui::Panier *ui;
-
     Client* m_client;
+    DAOcommande rqCommande;
+    DAOutilisateur rqUtil;
 
     QLabel* label;
     QLabel* label_2;

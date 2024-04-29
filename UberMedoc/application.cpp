@@ -83,19 +83,34 @@ void Application::on_pushButton_3_clicked(){
 
 void Application::on_pushButton_4_clicked(){
     DAOmedicament rqMedoc;
-    Medicament* medoc = rqMedoc.ObjetMedoc(recupClic,db);
-    m_client->ajouterAuPanier(medoc);
+    if (recupClic != ""){
+        Medicament* medoc = rqMedoc.ObjetMedoc(recupClic,db);
+        m_client->ajouterAuPanier(medoc);
 
-    QMessageBox msgBox;
-    msgBox.setWindowTitle("Bonne nouvelle");
-    msgBox.setText("Médicament ajouté");
-    msgBox.setIcon(QMessageBox::Information);
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Bonne nouvelle");
+        msgBox.setText("Médicament ajouté");
+        msgBox.setIcon(QMessageBox::Information);
 
-    // Ajouter un bouton "OK"
-    msgBox.addButton(QMessageBox::Ok);
+        // Ajouter un bouton "OK"
+        msgBox.addButton(QMessageBox::Ok);
 
-    // Afficher la boîte de message
-    msgBox.exec();
+        // Afficher la boîte de message
+        msgBox.exec();
+    }else{
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Pas si vite...");
+        msgBox.setText("Aucun médicament séléctioné");
+        msgBox.setIcon(QMessageBox::Information);
+
+        // Ajouter un bouton "OK"
+        msgBox.addButton(QMessageBox::Ok);
+
+        // Afficher la boîte de message
+        msgBox.exec();
+
+    }
+
 
 }
 

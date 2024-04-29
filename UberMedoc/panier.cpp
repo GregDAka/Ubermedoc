@@ -6,6 +6,10 @@
 #include <string>
 #include <QMessageBox>
 #include "client.h"
+#include "conBd.h"
+#include "DAOutilisateur.h"
+#include "DAOcommande.h"
+
 
 Panier::Panier(Client* cl, QWidget *parent)
     : QWidget(parent)
@@ -76,19 +80,45 @@ void Panier::on_pushButton_2_clicked(){
 }
 
 void Panier::on_pushButton_4_clicked(){
+    DAOcommande rqCommande;
+    DAOutilisateur rqUtil;
+    int idClient = rqUtil.getIdClientDAO(m_client->getMail(),db);
+    rqCommande.createCommande(idClient,db);
+    int idCommande = rqCommande.getIdCommande(idClient,db);
+    map<Medicament*, int> pan = m_client->getPanier();
+    for (const auto& entry : pan) {
+        Medicament* medicament = entry.first;
+        int quantite = entry.second;
+        rqCommande.createLigneCommande(idCommande,medicament->getRef(),quantite,db);
+    }
 
     if (m_client->getTotalPanier() <= m_client->getSolde()){
-        m_client->retirerSolde(m_client->getTotalPanier());
-        m_client->viderPanier();
-        close();
-        MesCommandes* mesCommande = new MesCommandes(m_client);
-        mesCommande -> show();
-        //insertion commande dans la bd
+        if(!m_client->getPanier().empty()){
+            m_client->retirerSolde(m_client->getTotalPanier());
+            m_client->viderPanier();
+            close();
+            MesCommandes* mesCommande = new MesCommandes(m_client);
+            mesCommande -> show();
+            //insertion commande dans la bd
+        }else{
+            // Créer une boîte de message
+            QMessageBox msgBox;
+            msgBox.setWindowTitle("Pas si vite...");
+            msgBox.setText("Panier vide !");
+            msgBox.setIcon(QMessageBox::Information);
+            msgBox.setFixedSize(800, 400);
+            // Ajouter un bouton "OK"
+            msgBox.addButton(QMessageBox::Ok);
+
+            // Afficher la boîte de message
+            msgBox.exec();
+        }
     }else{
         // Créer une boîte de message
         QMessageBox msgBox;
-        msgBox.setWindowTitle("Pas si vite !");
-        msgBox.setText("Solde insuffisant");
+        msgBox.setWindowTitle("Pas si vite...");
+        msgBox.setText("Solde insuffisant !");
+        msgBox.setIcon(QMessageBox::Information);
 
         // Ajouter un bouton "OK"
         msgBox.addButton(QMessageBox::Ok);
