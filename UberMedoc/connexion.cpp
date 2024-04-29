@@ -43,7 +43,6 @@ void Connexion::on_btnConfirmer_clicked()
         cout << "Mot de passe ou mail introuvalbe" << endl;
     }else{
         cout << "--Vous etes connecte--";
-        client->afficherDetails();
         close();
         Application* app = new Application(client);
         app->show();

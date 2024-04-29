@@ -21,11 +21,13 @@ class Client : public Utilisateur
         void afficherDetails();
         void inscrire();
         void ajouterSolde(double);
+        void retirerSolde(double);
         void ajouterAuPanier(Medicament*);
         void retirerDuPanier(Medicament*);
         void viderPanier();
         map<Medicament*, int> getPanier();
         double getTotalPanier();
+        double getSolde();
 };
 
 #endif // CLIENT_H

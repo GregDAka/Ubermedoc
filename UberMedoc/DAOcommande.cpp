@@ -1,9 +1,12 @@
 #include "DAOcommande.h"
 #include <iostream>
+#include "client.h"
+#include <QSqlDatabase>
+#include <QtSql>
+
 using namespace std ;
 
 vector<pair<string, int>> DAOcommande::recupCommande(string mail, int numCommande, QSqlDatabase db){
-
     QSqlQuery query(db); // On fait une requête qui récupère la commande voulu (idCommande passé en parametre) pour l'utilisateur connecté
     query.prepare("SELECT medicament.nom, quantite "
                   "FROM commande "
@@ -30,3 +33,35 @@ vector<pair<string, int>> DAOcommande::recupCommande(string mail, int numCommand
     }
     return listeMedocCommande ;
 }
+
+void createCommande(int idClient, QSqlDatabase db) {
+    QSqlQuery query(db);
+    query.prepare("INSERT INTO commande (idUtilisateur) VALUES (:idClient)");
+    query.bindValue(":idClient", idClient);
+
+    if (!query.exec()) {
+        qDebug() << "Erreur lors de l'insertion de la commande :" << query.lastError().text();
+        return;
+    }
+
+    qDebug() << "Nouvelle commande insérée avec succès ";
+}
+
+int getIdCommande(int idClient, QSqlDatabase db){
+    QSqlQuery query(db);
+    query.prepare("SELECT max(idCommande) FROM commande WHERE idUtilisateur = :idClient");
+    query.bindValue(":idClient", idClient);
+
+    if (!query.exec()) {
+        qDebug() << "Erreur lors de l'exécution de la requête :" << query.lastError().text();
+        return -1;
+    }
+
+    if (query.next()) {
+        return query.value(0).toInt();
+    } else {
+        qDebug() << "Aucune commande trouvée pour l'ID client spécifié";
+        return -1;
+    }
+}
+

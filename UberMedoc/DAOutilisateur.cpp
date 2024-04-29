@@ -1,6 +1,8 @@
 #include "DAOutilisateur.h"
 #include <string>
 #include <iostream>
+#include <QtSql>
+
 using namespace std ;
 
 Utilisateur* DAOutilisateur::connexionUtilisateur(std::string mail, std::string mdp, QSqlDatabase db){
@@ -83,6 +85,29 @@ Client* DAOutilisateur::inscriptionUtilisateur(string nom, string prenom, string
     return new Client(nom, prenom, adresse, mail, mdp);
 }
 
+int getIdClientDAO(std::string mail, QSqlDatabase db) {
+    if (!db.open()) {
+        qDebug() << "Impossible d'ouvrir la base de données";
+        return -1;
+    }
+
+    QSqlQuery query(db);
+    query.prepare("SELECT id FROM clients WHERE mail = :mail");
+    query.bindValue(":mail", QString::fromStdString(mail));
+
+    if (!query.exec()) {
+        qDebug() << "Erreur lors de l'exécution de la requête :" << query.lastError().text();
+        return -1;
+    }
+
+    // Récupérer l'ID du client s'il existe
+    if (query.next()) {
+        return query.value(0).toInt();
+    } else {
+        qDebug() << "Client introuvable pour l'adresse email spécifiée";
+        return -1;
+    }
+}
 
 
 

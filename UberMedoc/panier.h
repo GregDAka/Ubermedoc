@@ -2,7 +2,9 @@
 #define PANIER_H
 
 #include "qlabel.h"
+#include "qlistwidget.h"
 #include "qpushbutton.h"
+#include "client.h"
 #include <QWidget>
 #include "client.h"
 namespace Ui {
@@ -33,7 +35,7 @@ private:
 
     QLabel* label;
     QLabel* label_2;
-
+    QListWidget* listWidget;
     QPushButton* pushButton;
     QPushButton* pushButton_2;
     QPushButton* pushButton_4;

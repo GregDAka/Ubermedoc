@@ -3,14 +3,16 @@
 #include "mescommandes.h"
 #include "compte.h"
 #include "application.h"
-
+#include <string>
+#include <QMessageBox>
+#include "client.h"
 
 Panier::Panier(Client* cl, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Panier)
 {
     ui->setupUi(this);
-
+    setWindowTitle("Mon panier");
     m_client = cl;
 
     pushButton = findChild<QPushButton*>("pushButton");
@@ -26,11 +28,34 @@ Panier::Panier(Client* cl, QWidget *parent)
     if(m_client != nullptr){
         QString nom = QString::fromStdString(m_client->getNom());
         QString prenom = QString::fromStdString(m_client->getPrenom());
+        QString total = QString::fromStdString(to_string(m_client->getTotalPanier()));
+        QString solde = QString::fromStdString(to_string(m_client->getSolde()));
 
         //mise à jour des labels
         ui->label->setText(nom);
         ui->label_2->setText(prenom);
+        ui->label_8->setText(total);
+        ui->label_5->setText(solde);
     }
+
+
+    QStringList list;
+    QString nomMedicament;
+    string stringtmp;
+    for (const auto& entry : m_client->getPanier()) {
+        string quantité =
+        stringtmp += entry.first->getNom() + " " + to_string(entry.second) + " unitée(s)";
+        nomMedicament = QString::fromStdString(stringtmp);
+        list.append(nomMedicament);
+    }
+
+    // On créer un model avec la liste qu'on vient de créer.
+    QStringListModel *model = new QStringListModel(list, this);
+    // Associer le modèle à la QListView
+
+    ui->listView->setModel(model);
+    //connect(ui->listView, &QListView::clicked, this, &Application::onListViewClicked);
+
 }
 
 Panier::~Panier()
@@ -51,19 +76,46 @@ void Panier::on_pushButton_2_clicked(){
 }
 
 void Panier::on_pushButton_4_clicked(){
-    //comander panier
+
+    if (m_client->getTotalPanier() <= m_client->getSolde()){
+        m_client->retirerSolde(m_client->getTotalPanier());
+        m_client->viderPanier();
+        close();
+        MesCommandes* mesCommande = new MesCommandes(m_client);
+        mesCommande -> show();
+        //insertion commande dans la bd
+    }else{
+        // Créer une boîte de message
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Pas si vite !");
+        msgBox.setText("Solde insuffisant");
+
+        // Ajouter un bouton "OK"
+        msgBox.addButton(QMessageBox::Ok);
+
+        // Afficher la boîte de message
+        msgBox.exec();
+    }
+
+
 }
 
 void Panier::on_pushButton_5_clicked(){
-    //solde +1
+    m_client->ajouterSolde(1);
+    QString solde = QString::fromStdString(to_string(m_client->getSolde()));
+    ui->label_5->setText(solde);
 }
 
 void Panier::on_pushButton_6_clicked(){
-    //solde +10
+    m_client->ajouterSolde(10);
+    QString solde = QString::fromStdString(to_string(m_client->getSolde()));
+    ui->label_5->setText(solde);
 }
 
 void Panier::on_pushButton_7_clicked(){
-    //solde +25
+    m_client->ajouterSolde(25);
+    QString solde = QString::fromStdString(to_string(m_client->getSolde()));
+    ui->label_5->setText(solde);
 }
 
 void Panier::on_pushButton_8_clicked(){
