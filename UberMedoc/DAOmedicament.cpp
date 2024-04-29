@@ -4,6 +4,8 @@
 using namespace std ;
 
 void DAOmedicament::ajouterMedoc(string nom, double prix,QSqlDatabase db){
+
+    // On fait une requête qui nous servira à vérifier si le médicament est déjà dans la BD
     QSqlQuery requeteVerif(db);
     requeteVerif.prepare("SELECT COUNT(*) FROM medicament WHERE nom = :nom");
 
@@ -17,9 +19,10 @@ void DAOmedicament::ajouterMedoc(string nom, double prix,QSqlDatabase db){
     requeteVerif.next();
     int count = requeteVerif.value(0).toInt();
 
+    // Si le médicament est déjà dans la BD, on ne l'ajoute pas.
     if (count > 0) {
         std::cout << "Ce medicament est deja disponible a la vente." << std::endl;
-    } else {
+    } else { // Sinon on ajoute le médicament.
         QSqlQuery query(db);
         query.prepare("INSERT INTO medicament(nom,prix) VALUES(:nom,:prix)");
 
@@ -63,9 +66,9 @@ Medicament* DAOmedicament::ObjetMedoc(string nom,QSqlDatabase db){
         }
 
         else {
-            while (query.next()) {
+            while (query.next()) { // On fait les convertions en TYPE voulu car le type de base est Qstring.
                 int refO = query.value(0).toInt();
-                string nomO = query.value(1).toString().toStdString();
+                string nomO = query.value(1).toString().toStdString(); // nécéssaire pour convertir en String.
                 double prixO = query.value(2).toDouble();
                 return new Medicament(refO,nomO,prixO) ;
             }
