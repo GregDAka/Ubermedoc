@@ -12,6 +12,7 @@ AjoutMedoc::AjoutMedoc(QWidget *parent)
     , ui(new Ui::AjoutMedoc)
 {
     ui->setupUi(this);
+    setWindowTitle("Ajout médicament");
 
     pushButton = findChild<QPushButton*>("pushButton");
     pushButton_2 = findChild<QPushButton*>("pushButton_2");

@@ -10,7 +10,7 @@ MesCommandes::MesCommandes(Client* cl, QWidget *parent)
     , ui(new Ui::MesCommandes)
 {
     ui->setupUi(this);
-
+    setWindowTitle("Mes commandes");
     m_client = cl;
 
     pushButton_2 = findChild<QPushButton*>("pushButton");

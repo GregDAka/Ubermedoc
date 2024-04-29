@@ -9,6 +9,7 @@ Compte::Compte(Client* cl, QWidget *parent)
     , ui(new Ui::Compte)
 {
     ui->setupUi(this);
+    setWindowTitle("Mon compte");
 
     m_client = cl;
 

@@ -35,12 +35,14 @@ void Client::inscrire(){
 }
 
 void Client::ajouterAuPanier(Medicament* medoc){
-    if (panier.find(medoc) != panier.end()){
-        panier[medoc] += 1;
+    bool present = false;
+    for (const auto& entry : panier) {
+        if (entry.first->getRef() == medoc->getRef()){
+            present = true;
+            medoc = entry.first;
+        }
     }
-    else{
-        panier[medoc] = 1;
-    }
+    present ? panier[medoc] += 1 : panier[medoc] = 1;
     totalPanier += medoc->getPrix();
 }
 
@@ -74,4 +76,13 @@ double Client::getTotalPanier(){
 
 void Client::viderPanier(){
     panier.clear();
+    totalPanier = 0;
+}
+
+double Client::getSolde(){
+    return solde;
+}
+
+void Client::retirerSolde(double valeur){
+    solde -= valeur;
 }

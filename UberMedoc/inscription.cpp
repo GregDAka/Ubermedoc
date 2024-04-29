@@ -39,26 +39,25 @@ void Inscription::on_pushButton_clicked()
 void Inscription::on_pushButton_2_clicked(){
     QString tmp = lineEdit->text();
     string nom = tmp.toStdString();
-    cout << "1"<< endl;
+
     tmp = lineEdit_2->text();
     string prenom = tmp.toStdString();
-    cout << "2"<< endl;
+
     tmp = lineEdit_3->text();
     string adr = tmp.toStdString();
-    cout << "3"<< endl;
+
     tmp = lineEdit_4->text();
     string mail = tmp.toStdString();
-    cout << "4"<< endl;
+
     tmp = lineEdit_5->text();
     string mdp = tmp.toStdString();
-    cout << "5"<< endl;
+
     DAOutilisateur uti;
     uti.inscriptionUtilisateur(nom, prenom, adr, mail, mdp, db);
     Client* client = dynamic_cast<Client*>(uti.connexionUtilisateur(mail, mdp, db));
     if (client == nullptr){
         cout << "Mot de passe ou mail introuvalbe" << endl;
     }else{
-        client->afficherDetails();
         close();
         Application* application = new Application(client);
         application->show();
