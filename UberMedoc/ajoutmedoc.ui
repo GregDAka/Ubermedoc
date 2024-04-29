@@ -13,21 +13,47 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+background-color:#262626;
+color:#DADADA
+}
+QPushButton {
+    background-color: #303030; /* Use the same background color as QWidget */
+    border: 1px solid #DADADA; /* Use a contrasting border color */
+    padding: 5px 10px; /* Padding */
+    border-radius: 3px; /* Rounded corners */
+    color: #DADADA; /* Use the same text color as QWidget */
+    min-width: 80px; /* Minimum width */
+}
+
+QPushButton:hover {
+    background-color: #404040; /* Slightly lighter color when hovered */
+}
+
+QPushButton:pressed {
+    background-color: #202020; /* Slightly darker color when pressed */
+}
+QLineEdit{
+background-color: white;
+color: black;
+}</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_2" stretch="75,25">
    <property name="spacing">
     <number>0</number>
    </property>
    <property name="leftMargin">
-    <number>0</number>
+    <number>2</number>
    </property>
    <property name="topMargin">
     <number>0</number>
    </property>
    <property name="rightMargin">
-    <number>0</number>
+    <number>2</number>
    </property>
    <property name="bottomMargin">
-    <number>0</number>
+    <number>2</number>
    </property>
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -103,6 +129,9 @@
           <font>
            <pointsize>12</pointsize>
           </font>
+         </property>
+         <property name="text">
+          <string/>
          </property>
         </widget>
        </item>
