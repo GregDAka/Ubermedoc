@@ -36,7 +36,10 @@
      </property>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
+       <property name="spacing">
+        <number>6</number>
+       </property>
+       <item alignment="Qt::AlignRight">
         <widget class="QLabel" name="nomLabel">
          <property name="font">
           <font>
@@ -48,7 +51,7 @@
          </property>
         </widget>
        </item>
-       <item>
+       <item alignment="Qt::AlignLeft">
         <widget class="QLabel" name="prenomLabel">
          <property name="font">
           <font>
@@ -175,7 +178,16 @@
         </layout>
        </item>
        <item>
-        <widget class="QListView" name="listView"/>
+        <widget class="QListView" name="listView">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
