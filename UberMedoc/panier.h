@@ -1,9 +1,10 @@
 #ifndef PANIER_H
 #define PANIER_H
 
+#include "qlabel.h"
 #include "qpushbutton.h"
 #include <QWidget>
-
+#include "client.h"
 namespace Ui {
 class Panier;
 }
@@ -13,7 +14,7 @@ class Panier : public QWidget
     Q_OBJECT
 
 public:
-    explicit Panier(QWidget *parent = nullptr);
+    explicit Panier(Client* cl, QWidget *parent = nullptr);
     ~Panier();
 
 private slots:
@@ -27,6 +28,11 @@ private slots:
 
 private:
     Ui::Panier *ui;
+
+    Client* m_client;
+
+    QLabel* label;
+    QLabel* label_2;
 
     QPushButton* pushButton;
     QPushButton* pushButton_2;

@@ -4,16 +4,29 @@
 #include "panier.h"
 #include "application.h"
 
-Compte::Compte(QWidget *parent)
+Compte::Compte(Client* cl, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Compte)
 {
     ui->setupUi(this);
 
+    m_client = cl;
+
     pushButton = findChild<QPushButton*>("pushButton");
     pushButton_2 = findChild<QPushButton*>("pushButton_2");
     pushButton_5 = findChild<QPushButton*>("pushButton_5");
     pushButton_4 = findChild<QPushButton*>("pushButton_4");
+    label = findChild<QLabel*>("label");
+    label_2 = findChild<QLabel*>("label_2");
+
+    if(m_client != nullptr){
+        QString nom = QString::fromStdString(m_client->getNom());
+        QString prenom = QString::fromStdString(m_client->getPrenom());
+
+        //mise à jour des labels
+        ui->label->setText(nom);
+        ui->label_2->setText(prenom);
+    }
 }
 
 Compte::~Compte()
@@ -23,13 +36,13 @@ Compte::~Compte()
 
 void Compte::on_pushButton_clicked(){
     close();
-    MesCommandes* mesCommande = new MesCommandes();
+    MesCommandes* mesCommande = new MesCommandes(m_client);
     mesCommande -> show();
 }
 
 void Compte::on_pushButton_2_clicked(){
     close();
-    Application* app = new Application();
+    Application* app = new Application(m_client);
     app -> show();
 }
 
@@ -39,6 +52,6 @@ void Compte::on_pushButton_5_clicked(){
 
 void Compte::on_pushButton_4_clicked(){
     close();
-    Panier* panier = new Panier();
+    Panier* panier = new Panier(m_client);
     panier -> show();
 }

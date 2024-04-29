@@ -62,27 +62,40 @@ Application::~Application()
 
 void Application::on_pushButton_clicked(){
     close();
-    MesCommandes* mesCommande = new MesCommandes();
+    MesCommandes* mesCommande = new MesCommandes(m_client);
     mesCommande -> show();
 }
 
 void Application::on_pushButton_2_clicked(){
     close();
-    Compte* compte = new Compte();
+    Compte* compte = new Compte(m_client);
     compte -> show();
 }
 
 void Application::on_pushButton_3_clicked(){
     close();
-    Panier* panier = new Panier();
+    Panier* panier = new Panier(m_client);
     panier -> show();
 }
 
 void Application::on_pushButton_4_clicked(){
-    //ajout medoc pout admin
+    DAOmedicament rqMedoc;
+    Medicament* medoc = rqMedoc.ObjetMedoc(recupClic,db);
+    m_client->ajouterAuPanier(medoc);
+
+    /*QMessageBox msgBox;
+    msgBox.setWindowTitle("Information");
+    msgBox.setText("Médicament ajouté");
+    msgBox.setIcon(QMessageBox::Information);
+
+    // Ajouter un bouton "OK"
+    msgBox.addButton(QMessageBox::Ok);
+
+    // Afficher la boîte de message
+    msgBox.exec();*/
 }
 
-void Application::onListViewClicked(const QModelIndex &index) {
+void Application::onListViewClicked(const QModelIndex &index){
     QString text = index.data(Qt::DisplayRole).toString();
     recupClic = text.toStdString();
     modifMedocSelec(recupClic);
