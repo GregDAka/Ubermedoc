@@ -7,6 +7,7 @@
 #include "conbd.h"
 #include <iostream>
 #include "DAOmedicament.h"
+#include <QMessageBox>
 using namespace std ;
 
 Application::Application(Client* client, QWidget *parent)
@@ -83,7 +84,7 @@ void Application::on_pushButton_4_clicked(){
     Medicament* medoc = rqMedoc.ObjetMedoc(recupClic,db);
     m_client->ajouterAuPanier(medoc);
 
-    /*QMessageBox msgBox;
+    QMessageBox msgBox;
     msgBox.setWindowTitle("Information");
     msgBox.setText("Médicament ajouté");
     msgBox.setIcon(QMessageBox::Information);
@@ -92,7 +93,7 @@ void Application::on_pushButton_4_clicked(){
     msgBox.addButton(QMessageBox::Ok);
 
     // Afficher la boîte de message
-    msgBox.exec();*/
+    msgBox.exec();
 }
 
 void Application::onListViewClicked(const QModelIndex &index){
