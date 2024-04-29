@@ -5,9 +5,12 @@
 
 // NE PAS USING NAMESPACE STD DANS LE .H
 class DAOcommande{
-    void createCommande(QSqlDatabase db);
+public:
+    void createCommande(int idClient,QSqlDatabase db);
 
-    int getIdCommande(QSqlDatabase db);
+    int getIdCommande(int idClient,QSqlDatabase db);
+
+    void createLigneCommande(int idCommande, int ref, int quant, QSqlDatabase db);
 
     void recupCommande(QSqlDatabase db) ; //???
 

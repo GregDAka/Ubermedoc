@@ -85,12 +85,7 @@ Client* DAOutilisateur::inscriptionUtilisateur(string nom, string prenom, string
     return new Client(nom, prenom, adresse, mail, mdp);
 }
 
-int getIdClientDAO(std::string mail, QSqlDatabase db) {
-    if (!db.open()) {
-        qDebug() << "Impossible d'ouvrir la base de données";
-        return -1;
-    }
-
+int getIdClientDAO(std::string mail,QSqlDatabase db) {
     QSqlQuery query(db);
     query.prepare("SELECT id FROM clients WHERE mail = :mail");
     query.bindValue(":mail", QString::fromStdString(mail));

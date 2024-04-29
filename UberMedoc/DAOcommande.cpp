@@ -4,17 +4,6 @@
 #include <QtSql>
 
 
-    /*
-    faire une requete pour récupérer le id du client depuis la bdd -> fait
-    créer une commande avec le id du client et le statut (à voir) -> fait
-    faire une requete pour récupérer le id de la commande(select max(idcommande) sur commande où idUtil == idClient ) -> fait
-    parcourir le panier et pour chaque médicament créer une ligne dans ligne commande avec le id de la command, la reference du medoc, et la quantite
-    */
-
-void DAOcommande::recupCommande(SqlDatabase db){ // ???
-
-}
-
 void createCommande(int idClient, QSqlDatabase db) {
     QSqlQuery query(db);
     query.prepare("INSERT INTO commande (idUtilisateur) VALUES (:idClient)");
@@ -45,4 +34,28 @@ int getIdCommande(int idClient, QSqlDatabase db){
         return -1;
     }
 }
+
+void createLigneCommande(int idCommande, int ref, int quant, QSqlDatabase db){
+    QSqlQuery query(db);
+    query.prepare("INSERT INTO ligne_commande (idCommande,reference,quantite) VALUES (:idCommande,:ref,:quant)");
+    query.bindValue(":idCommande",idCommande);
+    query.bindValue(":ref",ref);
+    query.bindValue(":quant",quant);
+
+    if (!query.exec()) {
+        qDebug() << "Erreur lors de l'insertion de la commande :" << query.lastError().text();
+        return;
+    }
+
+    qDebug() << "Nouvelle commande insérée avec succès ";
+}
+
+
+
+
+
+
+
+
+
 

@@ -4,12 +4,15 @@
 #include "compte.h"
 #include "application.h"
 #include "client.h"
+#include "conBd.h"
+#include "DAOutilisateur.h"
+#include "DAOcommande.h"
+
 
 
 Panier::Panier(Client* cl, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Panier)
-    , m_client(client)
 {
     ui->setupUi(this);
 
@@ -53,6 +56,17 @@ void Panier::on_pushButton_2_clicked(){
 }
 
 void Panier::on_pushButton_4_clicked(){
+    DAOcommande rqCommande;
+    DAOutilisateur rqUtil;
+    int idClient = rqUtil.getIdClientDAO(m_client->getMail(),db);
+    rqCommande.createCommande(idClient,db);
+    int idCommande = rqCommande.getIdCommande(idClient,db);
+    map<Medicament*, int> pan = m_client->getPanier();
+    for (const auto& entry : pan) {
+        Medicament* medicament = entry.first;
+        int quantite = entry.second;
+        rqCommande.createLigneCommande(idCommande,medicament->getRef(),quantite,db);
+    }
 
 }
 
