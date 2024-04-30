@@ -22,6 +22,7 @@ private slots:
     void on_pushButton_2_clicked();
     void on_pushButton_5_clicked();
     void on_pushButton_4_clicked();
+    void on_deconnexion_clicked();
 
 private:
     Ui::Compte *ui;
@@ -35,6 +36,7 @@ private:
     QPushButton* pushButton_2;
     QPushButton* pushButton_5;
     QPushButton* pushButton_4;
+    QPushButton* deconnnexion;
 };
 
 #endif // COMPTE_H

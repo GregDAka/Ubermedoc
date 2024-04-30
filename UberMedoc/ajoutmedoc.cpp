@@ -1,9 +1,12 @@
 #include "ajoutmedoc.h"
 #include "DAOmedicament.h"
+#include "adminapp.h"
+#include "qmessagebox.h"
 #include "ui_ajoutmedoc.h"
 #include "application.h"
 #include "conBd.h"
 #include "DAOmedicament.h"
+#include <iostream>
 #include <string>
 using namespace std;
 
@@ -17,7 +20,7 @@ AjoutMedoc::AjoutMedoc(QWidget *parent)
     pushButton = findChild<QPushButton*>("pushButton");
     pushButton_2 = findChild<QPushButton*>("pushButton_2");
     lineEdit = findChild<QLineEdit*>("lineEdit");
-    lineEdit_2 = findChild<QLineEdit*>("lineEdit _2");
+    lineEdit_2 = findChild<QLineEdit*>("lineEdit_2");
 }
 
 AjoutMedoc::~AjoutMedoc()
@@ -27,8 +30,8 @@ AjoutMedoc::~AjoutMedoc()
 
 void AjoutMedoc::on_pushButton_clicked(){
     close();
-    //Application* app = new Application(m_client);
-    //app -> show();
+    AdminApp* app = new AdminApp();
+    app -> show();
 }
 
 void AjoutMedoc::on_pushButton_2_clicked(){
@@ -37,9 +40,23 @@ void AjoutMedoc::on_pushButton_2_clicked(){
     tmp = lineEdit_2->text();
     bool ok; // variable booléenne pour indiquer si la conversion a réussi
     double prix = tmp.toDouble(&ok);
-    DAOmedicament med;
-    med.ajouterMedoc(nom, prix, db);
-    close();
-    //Application* app = new Application(m_client);
-    //app -> show(); coucou
+    if (nom != "" && prix != NULL){
+        DAOmedicament med;
+        med.ajouterMedoc(nom, prix, db);
+        close();
+        AdminApp* app = new AdminApp();
+        app -> show();
+    }else{
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Pas si vite...");
+        msgBox.setText("Nom ou prix vide");
+        msgBox.setIcon(QMessageBox::Information);
+
+        // Ajouter un bouton "OK"
+        msgBox.addButton(QMessageBox::Ok);
+
+        // Afficher la boîte de message
+        msgBox.exec();
+    }
+
 }

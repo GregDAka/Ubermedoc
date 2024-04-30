@@ -34,12 +34,7 @@ QPushButton:hover {
 QPushButton:pressed {
     background-color: #202020; /* Slightly darker color when pressed */
 }
-QPushButton#pushButton_4 {
-	background-color: #404040;
-}
-QPushButton#pushButton_4:hover {
-	background-color: #404040;
-}</string>
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,9">
    <property name="spacing">
@@ -107,7 +102,7 @@ QPushButton#pushButton_4:hover {
         </font>
        </property>
        <property name="text">
-        <string>HOME</string>
+        <string>Deconnexion</string>
        </property>
       </widget>
      </item>
@@ -116,7 +111,7 @@ QPushButton#pushButton_4:hover {
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0">
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout" stretch="1,20">
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
        <property name="spacing">
         <number>2</number>
        </property>
@@ -146,7 +141,7 @@ QPushButton#pushButton_4:hover {
         </layout>
        </item>
        <item>
-        <widget class="QListWidget" name="listWidget"/>
+        <widget class="QListView" name="listView"/>
        </item>
       </layout>
      </item>

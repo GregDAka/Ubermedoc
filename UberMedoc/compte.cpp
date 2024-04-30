@@ -1,4 +1,5 @@
 #include "compte.h"
+#include "mainwindow.h"
 #include "ui_compte.h"
 #include "mescommandes.h"
 #include "panier.h"
@@ -65,3 +66,10 @@ void Compte::on_pushButton_4_clicked(){
     Panier* panier = new Panier(m_client);
     panier -> show();
 }
+
+void Compte::on_deconnexion_clicked(){
+    close();
+    MainWindow* main = new MainWindow();
+    main -> show();
+}
+

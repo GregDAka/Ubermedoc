@@ -174,7 +174,7 @@ QPushButton#pushButton_3:hover {
     </layout>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="75">
+    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0">
      <property name="spacing">
       <number>0</number>
      </property>
@@ -305,7 +305,7 @@ QPushButton#pushButton_3:hover {
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="40,60">
+        <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="40,60,5">
          <item alignment="Qt::AlignHCenter">
           <widget class="QLabel" name="label_7">
            <property name="font">
@@ -327,6 +327,19 @@ QPushButton#pushButton_3:hover {
            </property>
            <property name="text">
             <string>*adress*</string>
+           </property>
+          </widget>
+         </item>
+         <item alignment="Qt::AlignBottom">
+          <widget class="QPushButton" name="deconnexion">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Deconnexion</string>
            </property>
           </widget>
          </item>
