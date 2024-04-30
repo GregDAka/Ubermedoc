@@ -10,6 +10,7 @@
 #include "administrateur.h"
 
 
+
 class DAOutilisateur{
 public :
     /**
@@ -36,9 +37,7 @@ public :
 
     bool estAdmin(std::string mail, std::string mdp,QSqlDatabase db);
 
-    // void supprimerClient() --> Fonction d'utilisateur administrateur pour supprimer un client de la BD.
 
-    // void modifierClient() --> Fonction d'utilisateur administrateur pour modifier les données d'un client de la BD.
 };
 
 #endif // DAOUTILISATEUR_H

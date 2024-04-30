@@ -36,7 +36,7 @@ vector<pair<string, int>> DAOcommande::recupCommande(string mail, int numCommand
 }
 
 
-void createCommande(int idClient, QSqlDatabase db) {
+void DAOcommande::createCommande(int idClient, QSqlDatabase db) {
     QSqlQuery query(db);
     query.prepare("INSERT INTO commande (idUtilisateur) VALUES (:idClient)");
     query.bindValue(":idClient", idClient);
@@ -49,7 +49,7 @@ void createCommande(int idClient, QSqlDatabase db) {
     qDebug() << "Nouvelle commande insérée avec succès ";
 }
 
-int getIdCommande(int idClient, QSqlDatabase db){
+int DAOcommande::getIdCommande(int idClient, QSqlDatabase db){
     QSqlQuery query(db);
     query.prepare("SELECT max(idCommande) FROM commande WHERE idUtilisateur = :idClient");
     query.bindValue(":idClient", idClient);
@@ -67,7 +67,7 @@ int getIdCommande(int idClient, QSqlDatabase db){
     }
 }
 
-void createLigneCommande(int idCommande, int ref, int quant, QSqlDatabase db){
+void DAOcommande::createLigneCommande(int idCommande, int ref, int quant, QSqlDatabase db){
     QSqlQuery query(db);
     query.prepare("INSERT INTO ligne_commande (idCommande,reference,quantite) VALUES (:idCommande,:ref,:quant)");
     query.bindValue(":idCommande",idCommande);

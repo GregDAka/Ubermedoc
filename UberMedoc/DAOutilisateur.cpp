@@ -103,9 +103,9 @@ Client* DAOutilisateur::inscriptionUtilisateur(string nom, string prenom, string
     return new Client(nom, prenom, adresse, mail, mdp);
 }
 
-int getIdClientDAO(std::string mail,QSqlDatabase db) {
+int DAOutilisateur::getIdClientDAO(std::string mail,QSqlDatabase db) {
     QSqlQuery query(db);
-    query.prepare("SELECT id FROM clients WHERE mail = :mail");
+    query.prepare("SELECT idUtilisateur FROM utilisateur WHERE adrMail = :mail");
     query.bindValue(":mail", QString::fromStdString(mail));
 
     if (!query.exec()) {

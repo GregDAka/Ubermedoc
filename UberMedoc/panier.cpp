@@ -9,6 +9,7 @@
 #include "conBd.h"
 #include "DAOutilisateur.h"
 #include "DAOcommande.h"
+#include <iostream>
 
 
 Panier::Panier(Client* cl, QWidget *parent)
@@ -47,8 +48,7 @@ Panier::Panier(Client* cl, QWidget *parent)
     QString nomMedicament;
     string stringtmp;
     for (const auto& entry : m_client->getPanier()) {
-        string quantité =
-        stringtmp += entry.first->getNom() + " " + to_string(entry.second) + " unitée(s)";
+        stringtmp = entry.first->getNom() + " " + to_string(entry.second) + " unitée(s)";
         nomMedicament = QString::fromStdString(stringtmp);
         list.append(nomMedicament);
     }
@@ -60,6 +60,7 @@ Panier::Panier(Client* cl, QWidget *parent)
     ui->listView->setModel(model);
     //connect(ui->listView, &QListView::clicked, this, &Application::onListViewClicked);
 
+    //m_client->afficherDetails();
 }
 
 Panier::~Panier()
@@ -80,20 +81,23 @@ void Panier::on_pushButton_2_clicked(){
 }
 
 void Panier::on_pushButton_4_clicked(){
-    DAOcommande rqCommande;
-    DAOutilisateur rqUtil;
-    int idClient = rqUtil.getIdClientDAO(m_client->getMail(),db);
-    rqCommande.createCommande(idClient,db);
-    int idCommande = rqCommande.getIdCommande(idClient,db);
-    map<Medicament*, int> pan = m_client->getPanier();
-    for (const auto& entry : pan) {
-        Medicament* medicament = entry.first;
-        int quantite = entry.second;
-        rqCommande.createLigneCommande(idCommande,medicament->getRef(),quantite,db);
-    }
+
 
     if (m_client->getTotalPanier() <= m_client->getSolde()){
         if(!m_client->getPanier().empty()){
+
+            DAOcommande rqCommande;
+            DAOutilisateur rqUtil;
+            int idClient = rqUtil.getIdClientDAO(m_client->getMail(),db);
+            rqCommande.createCommande(idClient,db);
+            int idCommande = rqCommande.getIdCommande(idClient,db);
+
+            for (const auto& entry : m_client->getPanier()) {
+                Medicament* medicament = entry.first;
+                int quantite = entry.second;
+                rqCommande.createLigneCommande(idCommande,medicament->getRef(),quantite,db);
+            }
+
             m_client->retirerSolde(m_client->getTotalPanier());
             m_client->viderPanier();
             close();
