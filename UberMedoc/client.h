@@ -1,10 +1,8 @@
 #include <string>
 #include "medicament.h"
 #include <map>
-using namespace std;
 #ifndef CLIENT_H
 #define CLIENT_H
-
 #include "utilisateur.h"
 
 class Client : public Utilisateur

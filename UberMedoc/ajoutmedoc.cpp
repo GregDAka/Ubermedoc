@@ -3,7 +3,6 @@
 #include "adminapp.h"
 #include "qmessagebox.h"
 #include "ui_ajoutmedoc.h"
-#include "application.h"
 #include "conBd.h"
 #include "DAOmedicament.h"
 #include <iostream>

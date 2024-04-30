@@ -1,6 +1,5 @@
 #ifndef DAOMEDICAMENT_H
 #define DAOMEDICAMENT_H
-
 #include "medicament.h"
 #include <QSqlDatabase>
 #include <QSqlQuery>

@@ -2,7 +2,6 @@
 #define DAOCOMMANDE_H
 #include "client.h"
 #include <QSqlDatabase>
-
 #include <string>
 #include <QSqlDatabase>
 #include <QSqlQuery>

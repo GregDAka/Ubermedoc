@@ -7,12 +7,19 @@
 #include "qstringlistmodel.h"
 #include <QApplication>
 #include "ui_adminapp.h"
+#include "ajoutmedoc.h"
+#include "application.h"
+#include "client.h"
+#include "conbd.h"
+#include "DAOmedicament.h"
+#include <QMessageBox>
 
 AdminApp::AdminApp(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::AdminApp)
 {
     ui->setupUi(this);
+
 
     pushButton = findChild<QPushButton*>("pushButton");
     pushButton_3 = findChild<QPushButton*>("pushButton_3");
@@ -23,6 +30,9 @@ AdminApp::AdminApp(QWidget *parent)
     QStringList list;
 
     // On récupère tous les médicaments de la BD et on les ajoute à la liste.
+
+    setWindowTitle("Application ADMIN");
+
     QSqlQuery query(db);
     if (query.exec("SELECT nom FROM medicament") ) {
         while(query.next()){
@@ -74,6 +84,7 @@ void AdminApp::on_pushButton_3_clicked(){
         label_4->setText(QString::fromStdString("prix"));
     }
 }
+
 void AdminApp::onListViewClicked(const QModelIndex &index){
     QString text = index.data(Qt::DisplayRole).toString();
     recupClic = text.toStdString();
@@ -91,6 +102,7 @@ void AdminApp::modifMedocSelec(string medocselec){
     // On fait la même chose pour le prix, sauf qu'on converti le prix(double) en String.
     QString prixConverti = QString::number(medoc->getPrix());
     label_4->setText(prixConverti) ;
+
 
 }
 

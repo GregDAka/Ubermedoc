@@ -1,9 +1,13 @@
 #ifndef ADMINAPP_H
 #define ADMINAPP_H
 
+
 #include "qlabel.h"
 #include <QWidget>
 #include <qpushbutton.h>
+
+#include <qlabel.h>
+
 
 namespace Ui {
 class AdminApp;
@@ -20,6 +24,7 @@ public:
     void modifMedocSelec(std::string medocselec) ;
 
 private slots:
+
      void on_pushButton_clicked();
      void on_pushButton_3_clicked();
      void on_pushButton_4_clicked();
@@ -33,6 +38,7 @@ private:
     std::string recupClic ;
     QLabel* label_4 ;
     QLabel* label_3 ;
+
 };
 
 #endif // ADMINAPP_H

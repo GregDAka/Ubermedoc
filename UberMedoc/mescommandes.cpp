@@ -4,7 +4,6 @@
 #include "panier.h"
 #include "compte.h"
 #include "conBd.h"
-#include <iostream>
 #include "DAOcommande.h"
 
 using namespace std ;
@@ -18,7 +17,6 @@ MesCommandes::MesCommandes(Client* cl, QWidget *parent)
     m_client = cl;
 
     pushButton_2 = findChild<QPushButton*>("pushButton");
-    pushButton_5 = findChild<QPushButton*>("pushButton_5");
     pushButton_3 = findChild<QPushButton*>("pushButton_3");
     pushButton_4 = findChild<QPushButton*>("pushButton_4");
     label = findChild<QLabel*>("label");
@@ -98,10 +96,6 @@ void MesCommandes::on_pushButton_2_clicked(){
     close();
     Application* mesCommande = new Application(m_client);
     mesCommande -> show();
-}
-
-void MesCommandes::on_pushButton_5_clicked(){
-    //
 }
 
 void MesCommandes::on_pushButton_4_clicked(){

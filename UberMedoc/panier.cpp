@@ -9,7 +9,6 @@
 #include "conBd.h"
 #include "DAOutilisateur.h"
 #include "DAOcommande.h"
-#include <iostream>
 
 
 Panier::Panier(Client* cl, QWidget *parent)

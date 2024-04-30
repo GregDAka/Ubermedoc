@@ -207,16 +207,31 @@ QPushButton#pushButton:hover {
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout" stretch="80,20">
-       <property name="topMargin">
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
+       <property name="spacing">
         <number>3</number>
        </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
        <property name="rightMargin">
-        <number>3</number>
+        <number>1</number>
        </property>
        <property name="bottomMargin">
         <number>0</number>
        </property>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QLabel" name="label_4">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Contenu de ma commande :</string>
+         </property>
+        </widget>
+       </item>
        <item>
         <widget class="QListView" name="listView2">
          <property name="font">
@@ -226,24 +241,6 @@ QPushButton#pushButton:hover {
          </property>
          <property name="editTriggers">
           <set>QAbstractItemView::NoEditTriggers</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_5">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Annuler la commande</string>
          </property>
         </widget>
        </item>

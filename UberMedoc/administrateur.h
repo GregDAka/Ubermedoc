@@ -1,6 +1,5 @@
 #include "utilisateur.h"
 #include <string>
-
 #ifndef ADMINISTRATEUR_H
 #define ADMINISTRATEUR_H
 
