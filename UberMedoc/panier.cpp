@@ -47,7 +47,7 @@ Panier::Panier(Client* cl, QWidget *parent)
     QString nomMedicament;
     string stringtmp;
     for (const auto& entry : m_client->getPanier()) {
-        stringtmp = entry.first->getNom() + " " + to_string(entry.second) + " unitée(s)";
+        stringtmp = entry.first->getNom() + " " + to_string(entry.second) + " unité(s)";
         nomMedicament = QString::fromStdString(stringtmp);
         list.append(nomMedicament);
     }

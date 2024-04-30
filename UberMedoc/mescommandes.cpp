@@ -5,6 +5,7 @@
 #include "compte.h"
 #include "conBd.h"
 #include "DAOcommande.h"
+#include <iostream>
 
 using namespace std ;
 
@@ -43,25 +44,31 @@ MesCommandes::MesCommandes(Client* cl, QWidget *parent)
 
     QString qMail = QString::fromStdString(m_client->getMail());
     query.bindValue(":mail", qMail);
-
+    int num_commande = 1;
     if (query.exec() ) {
         while(query.next()){
             QString idCommande = query.value(0).toString();
-            string stdString = idCommande.toStdString();
-            list.append(idCommande);
+            string stdString = "Commande n°" + to_string(num_commande) + "  -> ref #"+idCommande.toStdString();
+            QString ligneDeLaCommande = QString::fromStdString(stdString);
+            list.append(ligneDeLaCommande);
+            num_commande++;
         }
         // On créer un model avec la liste qu'on vient de créer.
         QStringListModel *model = new QStringListModel(list, this);
         // Associer le modèle à la QListView
         ui->listView->setModel(model);
         connect(ui->listView, &QListView::clicked, this, &MesCommandes::onListViewClicked);
+        connect(ui->listView2, &QListView::clicked, this, &MesCommandes::onListView2Clicked);
     }
 
 }
 
 void MesCommandes::onListViewClicked(const QModelIndex &index){ // Quand on clic sur un element de la liste on récupère l'id de la commande
     QString selection = index.data(Qt::DisplayRole).toString();
-    int idCommande = selection.toInt() ;
+    string amp = selection.toStdString();
+    size_t pos = amp.find('#');
+    string partieApresHashtag = amp.substr(pos + 1);
+    int idCommande = stoi(partieApresHashtag);
     chargerBloc(idCommande);
 }
 
@@ -73,16 +80,21 @@ void MesCommandes::chargerBloc(int id){
     QStringList list;
 
     for (const auto& pair : liste) {
-        string ligne = "Médicament : " + pair.first + " , quantité : " + to_string(pair.second);
+        string ligne = pair.first + " , quantité : " + to_string(pair.second);
         QString qLigne = QString::fromStdString(ligne);
         list.append(qLigne) ;
         // On créer un model avec la liste qu'on vient de créer.
         QStringListModel *model = new QStringListModel(list, this);
         // Associer le modèle à la QListView
         ui->listView2->setModel(model);
-        connect(ui->listView2, &QListView::clicked, this, &MesCommandes::onListViewClicked);
     }
 
+}
+
+void MesCommandes::onListView2Clicked(const QModelIndex &index){ // Quand on clic sur un element de la liste on récupère l'id de la commande
+    close();
+    Application* app = new Application(m_client);
+    app->show();
 }
 
 

@@ -53,7 +53,7 @@ QPushButton:pressed {
     <number>0</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="72,25">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="72,0,0">
      <property name="spacing">
       <number>0</number>
      </property>
@@ -70,7 +70,7 @@ QPushButton:pressed {
        </property>
       </widget>
      </item>
-     <item>
+     <item alignment="Qt::AlignHCenter">
       <widget class="QPushButton" name="pushButton">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">

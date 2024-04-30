@@ -1,6 +1,7 @@
 #include "inscription.h"
 #include "application.h"
 #include "conbd.h"
+#include "qmessagebox.h"
 #include "ui_inscription.h"
 #include "mainwindow.h"
 #include "application.h"
@@ -52,15 +53,38 @@ void Inscription::on_pushButton_2_clicked(){
     tmp = lineEdit_5->text();
     string mdp = tmp.toStdString();
 
-    DAOutilisateur uti;
-    uti.inscriptionUtilisateur(nom, prenom, adr, mail, mdp, db);
-    Client* client = dynamic_cast<Client*>(uti.connexionUtilisateur(mail, mdp, db));
-    if (client == nullptr){
-        cout << "Mot de passe ou mail introuvalbe" << endl;
+    if(nom != "" && prenom != "" && adr != "" && mail != "" && mdp != ""){
+        DAOutilisateur uti;
+        uti.inscriptionUtilisateur(nom, prenom, adr, mail, mdp, db);
+        Client* client = dynamic_cast<Client*>(uti.connexionUtilisateur(mail, mdp, db));
+        if (client == nullptr){
+            QMessageBox msgBox;
+            msgBox.setWindowTitle("OULA !");
+            msgBox.setText("Ce client n'existe pas :/");
+            msgBox.setIcon(QMessageBox::Information);
+
+            // Ajouter un bouton "OK"
+            msgBox.addButton(QMessageBox::Ok);
+
+            // Afficher la boîte de message
+            msgBox.exec();
+        }else{
+            close();
+            Application* application = new Application(client);
+            application->show();
+        }
     }else{
-        close();
-        Application* application = new Application(client);
-        application->show();
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Oups !");
+        msgBox.setText("Tout les champs ne sont pas rempli :/");
+        msgBox.setIcon(QMessageBox::Information);
+
+        // Ajouter un bouton "OK"
+        msgBox.addButton(QMessageBox::Ok);
+
+        // Afficher la boîte de message
+        msgBox.exec();
     }
+
 }
 
