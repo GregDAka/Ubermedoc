@@ -1,8 +1,8 @@
 #ifndef INSCRIPTION_H
 #define INSCRIPTION_H
-
 #include <QWidget>
 #include <QLineEdit>
+
 namespace Ui {
 class Inscription;
 }

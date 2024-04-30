@@ -1,6 +1,5 @@
 #include "DAOmedicament.h"
 #include <iostream>
-
 using namespace std ;
 
 void DAOmedicament::ajouterMedoc(string nom, double prix,QSqlDatabase db){

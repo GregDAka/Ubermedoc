@@ -1,6 +1,5 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -19,7 +18,6 @@ public:
 
 private slots:
     void on_btnConnexion_clicked();
-
     void on_btnInscrire_clicked();
 
 private:

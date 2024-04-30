@@ -9,9 +9,8 @@
 #include <QtSql/QSqlQuery>
 #include <QApplication>
 #include "DAOcommande.h"
-#include "application.h"
-#include "DAOutilisateur.h"
-#include "DAOmedicament.h"
+//#include "DAOutilisateur.h"
+//#include "DAOmedicament.h"
 #include <iostream>
 
 using namespace std;
@@ -23,8 +22,8 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
     /*
-     *
-     * ----------------------- TEST OBJET ------------------------------
+    // *
+    // * ----------------------- TEST OBJET ------------------------------
 
     //On créer des medocs
     Medicament dolipranne(1, "Dolipranne", 8.5);
@@ -54,7 +53,7 @@ int main(int argc, char *argv[])
     // ----------------------- Requête TEST SQL -----------------------
 
     /*
-     *
+    // *
     if (query.exec("SELECT * FROM utilisateur")) {
         // On parcours la requête
         while (query.next()) {

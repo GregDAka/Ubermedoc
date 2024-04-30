@@ -1,6 +1,5 @@
 #ifndef DAOUTILISATEUR_H
 #define DAOUTILISATEUR_H
-
 #include <string>
 #include <QSqlDatabase>
 #include <QSqlQuery>
@@ -8,8 +7,6 @@
 #include "utilisateur.h"
 #include "client.h"
 #include "administrateur.h"
-
-
 
 class DAOutilisateur{
 public :

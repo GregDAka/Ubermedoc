@@ -1,10 +1,10 @@
 #ifndef COMPTE_H
 #define COMPTE_H
-
 #include "qlabel.h"
 #include "qpushbutton.h"
 #include <QWidget>
 #include "client.h"
+
 namespace Ui {
 class Compte;
 }
@@ -20,7 +20,6 @@ public:
 private slots:
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
-    void on_pushButton_5_clicked();
     void on_pushButton_4_clicked();
 
 private:
@@ -33,7 +32,6 @@ private:
 
     QPushButton* pushButton;
     QPushButton* pushButton_2;
-    QPushButton* pushButton_5;
     QPushButton* pushButton_4;
 };
 

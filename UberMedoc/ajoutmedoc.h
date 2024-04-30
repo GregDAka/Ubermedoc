@@ -1,6 +1,5 @@
 #ifndef AJOUTMEDOC_H
 #define AJOUTMEDOC_H
-
 #include "qlineedit.h"
 #include "qpushbutton.h"
 #include <QWidget>

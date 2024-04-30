@@ -1,6 +1,5 @@
 #ifndef PANIER_H
 #define PANIER_H
-
 #include "qlabel.h"
 #include "qlistwidget.h"
 #include "qpushbutton.h"
@@ -10,8 +9,6 @@
 #include "DAOcommande.h"
 #include "DAOutilisateur.h"
 #include "QSqlDatabase"
-
-
 
 namespace Ui {
 class Panier;

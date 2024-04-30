@@ -1,6 +1,5 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
-
 #include <QWidget>
 #include <QLabel>
 #include "client.h"
@@ -9,8 +8,6 @@
 #include <QLabel>
 #include "ui_application.h"
 #include <string>
-
-
 
 namespace Ui {
 class Application;

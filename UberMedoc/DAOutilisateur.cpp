@@ -2,7 +2,6 @@
 #include <string>
 #include <iostream>
 #include <QtSql>
-
 using namespace std ;
 
 Utilisateur* DAOutilisateur::connexionUtilisateur(std::string mail, std::string mdp, QSqlDatabase db){

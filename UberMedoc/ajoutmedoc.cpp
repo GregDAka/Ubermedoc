@@ -1,7 +1,6 @@
 #include "ajoutmedoc.h"
 #include "DAOmedicament.h"
 #include "ui_ajoutmedoc.h"
-#include "application.h"
 #include "conBd.h"
 #include "DAOmedicament.h"
 #include <string>

@@ -1,11 +1,8 @@
 #include "DAOcommande.h"
-#include <iostream>
 #include "client.h"
 #include <QSqlDatabase>
 #include <QtSql>
-
 using namespace std ;
-
 
 vector<pair<string, int>> DAOcommande::recupCommande(string mail, int numCommande, QSqlDatabase db){
     QSqlQuery query(db); // On fait une requête qui récupère la commande voulu (idCommande passé en parametre) pour l'utilisateur connecté

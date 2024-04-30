@@ -15,7 +15,6 @@ Compte::Compte(Client* cl, QWidget *parent)
 
     pushButton = findChild<QPushButton*>("pushButton");
     pushButton_2 = findChild<QPushButton*>("pushButton_2");
-    pushButton_5 = findChild<QPushButton*>("pushButton_5");
     pushButton_4 = findChild<QPushButton*>("pushButton_4");
     label = findChild<QLabel*>("label");
     label_2 = findChild<QLabel*>("label_2");
@@ -54,10 +53,6 @@ void Compte::on_pushButton_2_clicked(){
     close();
     Application* app = new Application(m_client);
     app -> show();
-}
-
-void Compte::on_pushButton_5_clicked(){
-    //
 }
 
 void Compte::on_pushButton_4_clicked(){

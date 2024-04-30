@@ -1,6 +1,5 @@
 #ifndef CONNEXION_H
 #define CONNEXION_H
-
 #include <QWidget>
 #include <QLineEdit>
 #include <QPushButton>

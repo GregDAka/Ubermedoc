@@ -5,7 +5,6 @@
 #include "compte.h"
 #include "panier.h"
 #include "conbd.h"
-#include <iostream>
 #include "DAOmedicament.h"
 #include <QMessageBox>
 using namespace std ;

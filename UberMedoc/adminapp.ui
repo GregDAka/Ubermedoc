@@ -58,7 +58,7 @@ QPushButton#pushButton_4:hover {
     <number>0</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="25,25,25">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="72,25">
      <property name="spacing">
       <number>0</number>
      </property>
@@ -93,28 +93,13 @@ QPushButton#pushButton_4:hover {
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_4">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>HOME</string>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0">
+     <property name="spacing">
+      <number>1</number>
+     </property>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout" stretch="1,20">
        <property name="spacing">
@@ -146,7 +131,7 @@ QPushButton#pushButton_4:hover {
         </layout>
        </item>
        <item>
-        <widget class="QListWidget" name="listWidget"/>
+        <widget class="QListView" name="listView"/>
        </item>
       </layout>
      </item>
