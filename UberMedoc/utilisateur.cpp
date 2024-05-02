@@ -14,17 +14,6 @@ Utilisateur::Utilisateur(string nomU, string prenomU, string adresseU, string ma
 
 Utilisateur::~Utilisateur(){}
 
-bool Utilisateur::connexion(string email, string motdepasse) {
-    if(email == mail && motdepasse == mdp) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-void Utilisateur::deconnexion() {
-    //
-}
 
 void Utilisateur::afficherDetails() {
     cout<<endl<< "Nom : " <<nom<<endl;

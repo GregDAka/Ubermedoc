@@ -16,7 +16,6 @@ public:
 
     std::vector<std::pair<std::string, int>> recupCommande( std::string mail, int numCommande, QSqlDatabase db) ;
 
-    void createCommande(QSqlDatabase db);
 
     int getIdCommande(int idClient,QSqlDatabase db);
 

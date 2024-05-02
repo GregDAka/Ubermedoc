@@ -42,8 +42,6 @@ void DAOcommande::createCommande(int idClient, QSqlDatabase db) {
         qDebug() << "Erreur lors de l'insertion de la commande :" << query.lastError().text();
         return;
     }
-
-    qDebug() << "Nouvelle commande insérée avec succès ";
 }
 
 int DAOcommande::getIdCommande(int idClient, QSqlDatabase db){
@@ -75,8 +73,6 @@ void DAOcommande::createLigneCommande(int idCommande, int ref, int quant, QSqlDa
         qDebug() << "Erreur lors de l'insertion de la commande :" << query.lastError().text();
         return;
     }
-
-    qDebug() << "Nouvelle commande insérée avec succès ";
 }
 
 

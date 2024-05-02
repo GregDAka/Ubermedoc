@@ -83,11 +83,11 @@ void MesCommandes::chargerBloc(int id){
         string ligne = pair.first + " , quantité : " + to_string(pair.second);
         QString qLigne = QString::fromStdString(ligne);
         list.append(qLigne) ;
-        // On créer un model avec la liste qu'on vient de créer.
-        QStringListModel *model = new QStringListModel(list, this);
-        // Associer le modèle à la QListView
-        ui->listView2->setModel(model);
     }
+    // On créer un model avec la liste qu'on vient de créer.
+    QStringListModel *model = new QStringListModel(list, this);
+    // Associer le modèle à la QListView
+    ui->listView2->setModel(model);
 
 }
 

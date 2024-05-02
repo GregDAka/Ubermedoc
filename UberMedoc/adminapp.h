@@ -26,14 +26,12 @@ public:
 private slots:
 
      void on_pushButton_clicked();
-     void on_pushButton_3_clicked();
      void on_pushButton_4_clicked();
 
 private:
     Ui::AdminApp *ui;
 
     QPushButton* pushButton;
-    QPushButton* pushButton_3;
     QPushButton* pushButton_4;
     std::string recupClic ;
     QLabel* label_4 ;

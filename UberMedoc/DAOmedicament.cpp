@@ -79,3 +79,6 @@ Medicament* DAOmedicament::ObjetMedoc(string nom,QSqlDatabase db){
 }
 
 
+
+
+

@@ -30,10 +30,6 @@ void Client::afficherDetails(){
 
 }
 
-void Client::inscrire(){
-    //code here
-}
-
 void Client::ajouterAuPanier(Medicament* medoc){
     bool present = false;
     for (const auto& entry : panier) {
@@ -46,21 +42,6 @@ void Client::ajouterAuPanier(Medicament* medoc){
     totalPanier += medoc->getPrix();
 }
 
-void Client::retirerDuPanier(Medicament* medoc){
-    int i = 0;
-    for (const auto& entry : panier) {
-        if (entry.first->getRef() == medoc->getRef()){
-            if (entry.second == 1){
-                panier.erase(entry.first);
-            }
-            else{
-                panier[entry.first] -= 1;
-            }
-            totalPanier -= medoc->getPrix();
-        }
-        i++;
-    }
-}
 
 void Client::ajouterSolde(double valeur){
     solde += valeur;

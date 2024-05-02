@@ -17,6 +17,7 @@ class DAOmedicament{
      * @return Renvoie un médicament.
      */
     Medicament* ObjetMedoc(string nom,QSqlDatabase db) ;
+
 };
 
 #endif // DAOMEDICAMENT_H

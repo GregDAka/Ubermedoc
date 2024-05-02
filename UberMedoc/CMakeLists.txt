@@ -26,7 +26,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         utilisateur.h utilisateur.cpp
         client.h client.cpp
-        commande.h commande.cpp
+
         medicament.h medicament.cpp
         connexion.h connexion.cpp connexion.ui
         conBd.h

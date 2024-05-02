@@ -17,11 +17,9 @@ class Client : public Utilisateur
         Client(string nomU, string prenomU, string adresseU, string mailU, string mdpU);
         ~Client();
         void afficherDetails();
-        void inscrire();
         void ajouterSolde(double);
         void retirerSolde(double);
         void ajouterAuPanier(Medicament*);
-        void retirerDuPanier(Medicament*);
         void viderPanier();
         map<Medicament*, int> getPanier();
         double getTotalPanier();

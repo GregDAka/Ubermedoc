@@ -22,7 +22,6 @@ AdminApp::AdminApp(QWidget *parent)
 
 
     pushButton = findChild<QPushButton*>("pushButton");
-    pushButton_3 = findChild<QPushButton*>("pushButton_3");
 
     label_4 = ui->label_4;
     label_3 = ui->label_3;
@@ -64,26 +63,6 @@ void AdminApp::on_pushButton_4_clicked(){
     main -> show();
 }
 
-void AdminApp::on_pushButton_3_clicked(){
-    //supp med dela bd
-    QStringList list;
-
-    // On récupère tous les médicaments de la BD et on les ajoute à la liste.
-    QSqlQuery query(db);
-    if (query.exec("SELECT nom FROM medicament") ) {
-        while(query.next()){
-            QString nomMedicament = query.value("nom").toString();
-            list.append(nomMedicament);
-        }
-        // On créer un model avec la liste qu'on vient de créer.
-        QStringListModel *model = new QStringListModel(list, this);
-        // Associer le modèle à la QListView
-        ui->listView->setModel(model);
-        connect(ui->listView, &QListView::clicked, this, &AdminApp::onListViewClicked);
-        label_3->setText(QString::fromStdString("nom"));
-        label_4->setText(QString::fromStdString("prix"));
-    }
-}
 
 void AdminApp::onListViewClicked(const QModelIndex &index){
     QString text = index.data(Qt::DisplayRole).toString();
